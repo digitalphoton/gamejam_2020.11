@@ -3,7 +3,8 @@
 [ext_resource path="res://Maps/DebugMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Map Components/Box.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Botão/Button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Button/Button.tscn" type="PackedScene" id=4]
+
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 50.0

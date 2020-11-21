@@ -17,9 +17,11 @@ texture = ExtResource( 2 )
 flip_h = true
 
 [node name="CollisionLeft" type="CollisionPolygon2D" parent="Rampa"]
+visible = false
 polygon = PoolVector2Array( -256, 32, -161, -27, -161, 32 )
 
 [node name="CollisionRight" type="CollisionPolygon2D" parent="Rampa"]
+visible = false
 polygon = PoolVector2Array( 161, -27, 256, 32, 161, 32 )
 
 [node name="Middle" type="KinematicBody2D" parent="."]
@@ -28,5 +30,6 @@ polygon = PoolVector2Array( 161, -27, 256, 32, 161, 32 )
 texture = ExtResource( 1 )
 
 [node name="CollisionCenter" type="CollisionPolygon2D" parent="Middle"]
+visible = false
 position = Vector2( 3, 1 )
 polygon = PoolVector2Array( -164, 31, -164, -28, -148, -33, 142, -33, 158, -28, 158, 31 )
