@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Map Components/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Map Components/256x256_autotile_tilemap1.png" type="Texture" id=2]
@@ -149,21 +149,6 @@ points = PoolVector2Array( 256, 48, 256, 256, 48, 256 )
 
 [sub_resource type="ConvexPolygonShape2D" id=53]
 points = PoolVector2Array( 208, 256, 0, 256, 0, 48, 0, 48 )
-
-[sub_resource type="GDScript" id=51]
-script/source = "tool
-extends TileSet
-
-const BLOCK = 0
-const RAMP = 1
-
-var binds = {
-	BLOCK: [RAMP],
-	RAMP: [BLOCK]}
-
-func _is_tile_bound(id, nid):
-	return nid in binds[id]
-"
 
 [sub_resource type="TileSet" id=1]
 0/name = "256x256_autotile_tilemap1.png 0"
@@ -484,7 +469,6 @@ func _is_tile_bound(id, nid):
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
-script = SubResource( 51 )
 
 [node name="DebugMap" type="Node2D"]
 
