@@ -16,7 +16,7 @@ export var gravity = 200
 export var max_falling_speed = 2000
 
 #Variáveis
-var velocity = Vector2()
+var motion = Vector2()
 var input_disabled = false
 
 #Node
@@ -33,10 +33,9 @@ func move(input_right,input_left,input_jump):
 	
 	#Gravity power engage!
 	if !kb.is_on_floor():
-		velocity.y += gravity
-		
+		motion.y += gravity
 		#Limita o poder da gravidade :C
-		velocity.y = min(max_falling_speed,velocity.y)
+		motion.y = min(max_falling_speed,motion.y)
 	
 	#Checa se o input tá habilitado
 	if input_disabled == true:
@@ -44,22 +43,22 @@ func move(input_right,input_left,input_jump):
 	else:
 		#Pro movimento horizontal
 		if input_right == true and input_left == true:
-			velocity.x = lerp(velocity.x,0,0.4)
+			motion.x = lerp(motion.x,0,0.4)
 		elif input_right == true:
-			velocity.x += acceleration
-			velocity.x = min(max_speed,velocity.x)
+			motion.x += acceleration
+			motion.x = min(max_speed,motion.x)
 		elif input_left == true:
-			velocity.x -= acceleration
-			velocity.x = max(-max_speed,velocity.x)
+			motion.x -= acceleration
+			motion.x = max(-max_speed,motion.x)
 		else:
-			velocity.x = lerp(velocity.x,0,0.4)
+			motion.x = lerp(motion.x,0,0.4)
 		
 		#Pra pular
 		if kb.is_on_floor() and input_jump == true:
-			velocity.y = -jump_height
+			motion.y = -jump_height
 		
 		#Executa o movimento
-		velocity = kb.move_and_slide(velocity,UP)
+		motion = kb.move_and_slide(motion,UP,false,4,0.785398,false)
 
 func verify():
 	if kb.is_class("KinematicBody2D"):
