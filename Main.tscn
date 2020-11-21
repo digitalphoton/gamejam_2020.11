@@ -161,5 +161,5 @@ position = Vector2( 8960, 7808 )
 
 [node name="BoxHeavy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 768 )
-mass = 20.0
+mass = 5.0
 script = SubResource( 3 )
