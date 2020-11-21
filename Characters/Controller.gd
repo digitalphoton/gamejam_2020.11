@@ -9,11 +9,11 @@ const DOWN 	= Vector2(0,1)
 const UP 	= Vector2(0,-1)
 
 #Variáveis editáveis no Inspector
-export var acceleration = 80
-export var max_speed = 400
-export var jump_height = 800
-export var gravity = 40
-export var max_falling_speed = 800
+export var acceleration = 350
+export var max_speed = 2000
+export var jump_height = 3500
+export var gravity = 200
+export var max_falling_speed = 2000
 
 #Variáveis
 var velocity = Vector2()
