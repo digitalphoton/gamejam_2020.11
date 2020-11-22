@@ -1,17 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Menus/Minecraft.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menus/Map_Select.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 256
+size = 150
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 128
+size = 256
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
+size = 128
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 128
 font_data = ExtResource( 1 )
 
@@ -24,9 +28,39 @@ __meta__ = {
 }
 maps = [ "res://Maps/DebugMap.tscn", "res://Maps/NewMapIHope.tscn" ]
 
+[node name="MapSelectText" type="Label" parent="."]
+margin_left = 179.891
+margin_top = 54.6787
+margin_right = 5811.89
+margin_bottom = 3439.68
+custom_fonts/font = SubResource( 1 )
+text = "Controles:
+    [<-] e [->] para os lados
+    [space] para pular
+    [1] e [2] para alterar jogador
+    [E] para agarrar moedas
+    [Esc] para retornar ao menu
+
+Interacoes:
+    moedas: cuidado pra nao deixar elas cairem
+    Botoes: pisar em cima ou posicionar uma caixa
+    Portas: cada porta tem um botao ou uma chave especifica, se nao funciona, deve ser outra
+    Polias(trecos vermelhos): vem em pares, se um player e/ou uma caixa forem posicionados sobre uma plataforma, e seu peso exceder o peso na outra plataforma, uma sobe, outra desce
+    Frustracaoo: um perigo escondido, ao falhar num pulo, pode ser que se abata e perca vontade de continuar (indicado pelos \"olhos\" apontando para baixo e recusa a se mover). Tera que reiniciar a fase.
+    
+Seu objetivo: se encontrar com outro jogador, em uma sala a direita do spawn. Para apenas assim se libertar, ambos com as moedas coletadas pelo mapa"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1179.69
+margin_top = -1179.69
+margin_right = 1179.69
+margin_bottom = -1179.69
 custom_constants/margin_right = 256
 custom_constants/margin_top = 256
 custom_constants/margin_left = 256
@@ -44,10 +78,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_constants/separation = 128
 
-[node name="MapSelectText" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="MapSelectText2" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 1632.0
 margin_bottom = 256.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "MAP SELECT"
 align = 1
 
@@ -61,7 +95,7 @@ custom_constants/separation = 100
 margin_right = 1632.0
 margin_bottom = 134.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_constants/hseparation = 64
 action_mode = 0
 text = "DEBUG MAP"
@@ -71,7 +105,7 @@ margin_top = 234.0
 margin_right = 1632.0
 margin_bottom = 368.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_constants/hseparation = 64
 action_mode = 0
 text = "NewMapIHope"
