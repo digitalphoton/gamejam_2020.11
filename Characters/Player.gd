@@ -19,12 +19,9 @@ onready var controller 	= get_node("Controller")
 onready var camera 		= get_node("Camera2D")
 
 func _ready():
-	camera.limit_left = camlimits.Left
-	camera.limit_top = camlimits.Top
-	camera.limit_right = camlimits.Right
-	camera.limit_bottom = camlimits.Bottom
+	pass
 
-func _process(delta):
+func _physics_process(_delta):
 	#Muda o current da camera de acordo com a var active
 	#Ou seja, quando o active é true a câmera desse personagem é usada quando o active é false a camera desse personagem não é usada
 	if camera.current != active:
@@ -51,4 +48,9 @@ func _process(delta):
 			#Use a força!
 			var force_dir = Vector2(body.global_position - self.global_position).normalized()
 			body.apply_central_impulse(force_dir * strength)
-			
+
+func set_camlimits(left = -10000000,top = -10000000,right = 10000000,bottom = 10000000):
+	camera.limit_left 	= left
+	camera.limit_top 	= top
+	camera.limit_right 	= right
+	camera.limit_bottom = bottom
