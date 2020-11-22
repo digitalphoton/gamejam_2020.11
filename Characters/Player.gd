@@ -3,11 +3,7 @@ extends KinematicBody2D
 
 #Variáveis exportáveis
 #Stats
-
-export var active = false
-export var strength = 500
-export var camlimits = {"Left":-10000000,"Top":-10000000,"Right":10000000,"Bottom":10000000}
-
+export var strength = 700
 
 #Respawn Data
 export(String,FILE,"*.tscn") var spawn_scene_path
@@ -17,20 +13,12 @@ export var spawn_coordinates = Vector2()
 var player_input = {}
 
 #Nodes
-onready var controller 	= get_node("Controller")
-onready var camera 		= get_node("Camera2D")
+onready var controller = get_node("Controller")
 
 func _ready():
 	pass
 
-func _physics_process(_delta):
-	#Muda o current da camera de acordo com a var active
-	#Ou seja, quando o active é true a câmera desse personagem é usada quando o active é false a camera desse personagem não é usada
-	if camera.current != active:
-		camera.current = active
-	if controller.input_enabled != active:
-		controller.input_enabled = active
-
+func _physics_process(delta):
 	#Player controls. Teclas podem ser encontradas em Project>>Project Settings>>Input Map
 	player_input.right = Input.is_action_pressed("Right")
 	player_input.left = Input.is_action_pressed("Left")
@@ -50,9 +38,4 @@ func _physics_process(_delta):
 			#Use a força!
 			var force_dir = Vector2(body.global_position - self.global_position).normalized()
 			body.apply_central_impulse(force_dir * strength)
-
-func set_camlimits(left = -10000000,top = -10000000,right = 10000000,bottom = 10000000):
-	camera.limit_left 	= left
-	camera.limit_top 	= top
-	camera.limit_right 	= right
-	camera.limit_bottom = bottom
+			

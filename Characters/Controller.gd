@@ -17,7 +17,7 @@ export var max_falling_speed = 2000
 
 #Variáveis
 var motion = Vector2()
-var input_enabled = true
+var input_disabled = false
 
 #Node
 onready var kb = self.get_parent()
@@ -38,7 +38,9 @@ func move(input_right,input_left,input_jump):
 		motion.y = min(max_falling_speed,motion.y)
 	
 	#Checa se o input tá habilitado
-	if input_enabled == true:
+	if input_disabled == true:
+		pass
+	else:
 		#Pro movimento horizontal
 		if input_right == true and input_left == true:
 			motion.x = lerp(motion.x,0,0.4)
