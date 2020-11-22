@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Map Components/Button/Porta.gd" type="Script" id=2]
+[ext_resource path="res://Map Components/Button/Porta.png" type="Texture" id=3]
+
+[node name="Door" type="RigidBody2D"]
+position = Vector2( 0, 1 )
+scale = Vector2( 2, 2 )
+collision_layer = 2
+collision_mask = 15
+mode = 1
+can_sleep = false
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Door" type="Node2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PoolVector2Array( -20, -256, 22, -256, 22, 202, 30, 208, 30, 256, -30, 256, -30, 208, -20, 202 )
