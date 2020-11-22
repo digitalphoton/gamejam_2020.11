@@ -9,7 +9,7 @@ script = ExtResource( 6 )
 
 [node name="Start Menu" parent="." instance=ExtResource( 1 )]
 
-[node name="Main Theme" type="AudioStreamPlayer" parent="."]
+[node name="Main Theme" type="AudioStreamPlayer" parent="Start Menu"]
 stream = ExtResource( 2 )
 autoplay = true
 
