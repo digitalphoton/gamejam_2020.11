@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RampaBotao.png-e64f9798e7245ebd18c95512fac4e215.stex"
+path="res://.import/Porta.png-b703144ca5564ba85a04ea5d84080efc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Button/RampaBotao.png"
-dest_files=[ "res://.import/RampaBotao.png-e64f9798e7245ebd18c95512fac4e215.stex" ]
+source_file="res://Map Components/Button/Porta.png"
+dest_files=[ "res://.import/Porta.png-b703144ca5564ba85a04ea5d84080efc.stex" ]
 
 [params]
 

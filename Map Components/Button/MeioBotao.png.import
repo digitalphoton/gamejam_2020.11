@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MeioBotao.png-8976138a29699aa7ced69ac9f60c1b8a.stex"
+path="res://.import/MeioBotao.png-19c7d6190a12a758bfef5e7e0f9fc896.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Button/MeioBotao.png"
-dest_files=[ "res://.import/MeioBotao.png-8976138a29699aa7ced69ac9f60c1b8a.stex" ]
+source_file="res://Map Components/Button/MeioBotao.png"
+dest_files=[ "res://.import/MeioBotao.png-19c7d6190a12a758bfef5e7e0f9fc896.stex" ]
 
 [params]
 
