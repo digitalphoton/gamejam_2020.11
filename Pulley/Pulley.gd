@@ -22,7 +22,6 @@ func _physics_process(_delta):
 	#verifica se houveram colisões
 	result_move = total_mass_plat1 - total_mass_plat2
 	if flag == 1:
-		print(result_move)
 		if result_move >= 0:
 #			print("plat1 must down")
 			result_move = 0
@@ -69,10 +68,8 @@ func _on_Limiter_body_exited(body):
 	if body == get_node("platform1") or body == get_node("platform2"):
 		if result_move >= 0:
 			flag = 1
-			print("plat1 too down")
 		else:
 			flag = 2
-			print("plat1 too up")
 
 func _on_Limiter_body_entered(body):
 	if body == get_node("platform1") or body == get_node("platform2"):
