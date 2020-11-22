@@ -666,12 +666,12 @@ current_player = 1
 [node name="Player" parent="." groups=[
 "Player",
 ] instance=ExtResource( 5 )]
-position = Vector2( 3712, 4224 )
+position = Vector2( 2176, 4224 )
 
 [node name="Player2" parent="." groups=[
 "Player",
 ] instance=ExtResource( 5 )]
-position = Vector2( 3072, 9344 )
+position = Vector2( 8960, 9344 )
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 position = Vector2( 7, 0 )

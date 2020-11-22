@@ -1,19 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Menus/Start Menu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Music/menu.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=6]
 
 [node name="Main" type="Node"]
 script = ExtResource( 6 )
-BGMs = {
-"LevelMusic": "res://Music/level.ogg",
-"StartMenu": "res://Music/menu.ogg"
-}
-
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-autoplay = true
 
 [node name="Start Menu" parent="." instance=ExtResource( 1 )]
-[connection signal="ready" from="." to="Start Menu" method="_on_Main_ready"]
