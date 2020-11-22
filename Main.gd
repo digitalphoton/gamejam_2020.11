@@ -12,4 +12,3 @@ func _deferred_change_scene(scene,new_scene_path):
 	var l = load(new_scene_path)
 	current_scene = l.instance()
 	self.add_child(current_scene)
-	

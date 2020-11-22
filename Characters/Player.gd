@@ -19,6 +19,7 @@ var dead = false
 var bodies
 
 #Nodes
+onready var main		= get_parent().get_parent()
 onready var controller 	= get_node("Controller")
 onready var camera 		= get_node("Camera2D")
 onready var sprite		= get_node("Sprite")
@@ -26,6 +27,10 @@ onready var area		= get_node("Area2D")
 
 func _ready():
 	pass
+
+func _process(_delta):
+	if active == true and Input.is_action_just_pressed("ui_cancel"):
+		main.change_scene(main.get_child(0),"res://Menus/Map_Select.tscn")
 
 func _physics_process(_delta):
 	#Muda o current da camera de acordo com a var active
