@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlaceholderRamp.png-ba3a21eb9432ed845117d39817f55d6e.stex"
+path="res://.import/PlaceholerPlayer.png-998dd7b6d355d798c764b65ef7dbc8d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Map Components/PlaceholderRamp.png"
-dest_files=[ "res://.import/PlaceholderRamp.png-ba3a21eb9432ed845117d39817f55d6e.stex" ]
+source_file="res://Characters/PlaceholerPlayer.png"
+dest_files=[ "res://.import/PlaceholerPlayer.png-998dd7b6d355d798c764b65ef7dbc8d7.stex" ]
 
 [params]
 
