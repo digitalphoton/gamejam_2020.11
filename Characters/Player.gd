@@ -34,7 +34,7 @@ func _physics_process(_delta):
 		if controller.input_enabled != active:
 			controller.input_enabled = active
 	else:
-		controller.input_enabled = false
+		controller.input_enabled	= false
 
 	#Player controls. Teclas podem ser encontradas em Project>>Project Settings>>Input Map
 	player_input.right = Input.is_action_pressed("Right")
