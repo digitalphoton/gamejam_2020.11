@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://Maps/DebugMap.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Map Components/Box.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Map Components/Button/Button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Map Components/Pulley/Pulley.gd" type="Script" id=9]
+[ext_resource path="res://Sounds/Music/level.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Map Components/Pit.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -478,7 +479,7 @@ points = PoolVector2Array( 208, 256, 0, 256, 0, 48, 0, 48 )
 } ]
 0/z_index = 0
 
-[sub_resource type="GDScript" id=53]
+[sub_resource type="GDScript" id=51]
 script/source = "extends RigidBody2D
 
 #Variáveis exportadas
@@ -506,7 +507,7 @@ func _on_Button_button_Trigger(buttonOn):
 	pass # Replace with function body.
 "
 
-[sub_resource type="GDScript" id=54]
+[sub_resource type="GDScript" id=52]
 script/source = "extends RigidBody2D
 
 #Variáveis exportadas
@@ -534,7 +535,7 @@ func _on_Button2_button_Trigger(buttonOn):
 	pass # Replace with function body.
 "
 
-[sub_resource type="GDScript" id=55]
+[sub_resource type="GDScript" id=53]
 script/source = "extends RigidBody2D
 
 #Variáveis exportadas
@@ -561,7 +562,7 @@ func _on_Button3_button_Trigger(buttonOn):
 	pass # Replace with function body.
 "
 
-[sub_resource type="GDScript" id=56]
+[sub_resource type="GDScript" id=54]
 script/source = "extends RigidBody2D
 
 #Variáveis exportadas
@@ -588,10 +589,10 @@ func _on_Button4_button_Trigger(buttonOn):
 	pass # Replace with function body.
 "
 
-[sub_resource type="RectangleShape2D" id=51]
+[sub_resource type="RectangleShape2D" id=55]
 extents = Vector2( 768, 64 )
 
-[sub_resource type="RectangleShape2D" id=52]
+[sub_resource type="RectangleShape2D" id=56]
 extents = Vector2( 768, 64 )
 
 [node name="DebugMap" type="Node2D"]
@@ -623,28 +624,28 @@ tile_data = PoolIntArray( 65535, 0, 7, 0, 0, 196612, 1, 0, 196612, 2, 0, 196612,
 
 [node name="Door" parent="." instance=ExtResource( 6 )]
 position = Vector2( 6528, 10752 )
-script = SubResource( 53 )
+script = SubResource( 51 )
 
 [node name="Button" parent="." instance=ExtResource( 8 )]
 position = Vector2( 5120, 10496 )
 
 [node name="Door2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 8960, 7424 )
-script = SubResource( 54 )
+script = SubResource( 52 )
 
 [node name="Button2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 768, 5120 )
 
 [node name="Door3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 9728, 3840 )
-script = SubResource( 55 )
+script = SubResource( 53 )
 
 [node name="Button3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 6528, 7680 )
 
 [node name="Door4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 9600, 3840 )
-script = SubResource( 56 )
+script = SubResource( 54 )
 
 [node name="Button4" parent="." instance=ExtResource( 8 )]
 position = Vector2( 7296, 7680 )
@@ -676,7 +677,7 @@ script = ExtResource( 9 )
 position = Vector2( -896, -4096 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform1"]
-shape = SubResource( 51 )
+shape = SubResource( 55 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/platform1"]
 modulate = Color( 1, 0, 0, 1 )
@@ -687,13 +688,13 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform1/Area2Dplat1"]
 position = Vector2( 0, -128 )
-shape = SubResource( 52 )
+shape = SubResource( 56 )
 
 [node name="platform2" type="KinematicBody2D" parent="Node2D"]
 position = Vector2( -640, 5376 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform2"]
-shape = SubResource( 51 )
+shape = SubResource( 55 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/platform2"]
 modulate = Color( 1, 0, 0, 1 )
@@ -704,7 +705,7 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/platform2/Area2Dplat2"]
 position = Vector2( 0, -128 )
-shape = SubResource( 52 )
+shape = SubResource( 56 )
 
 [node name="Limiter" type="Area2D" parent="Node2D"]
 
@@ -713,6 +714,10 @@ polygon = PoolVector2Array( -768, -2432, -768, -768, -1024, -768, -1024, -4224, 
 
 [node name="Pit" parent="." instance=ExtResource( 13 )]
 position = Vector2( 9600, 10880 )
+
+[node name="BG Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
 [connection signal="button_Trigger" from="Button" to="Door" method="_on_Button_button_Trigger"]
 [connection signal="button_Trigger" from="Button2" to="Door2" method="_on_Button2_button_Trigger"]
 [connection signal="button_Trigger" from="Button3" to="Door3" method="_on_Button3_button_Trigger"]
