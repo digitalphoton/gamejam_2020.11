@@ -23,6 +23,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Controller" parent="." instance=ExtResource( 2 )]
+max_falling_speed = 5000
 
 [node name="Camera2D" type="Camera2D" parent="."]
 drag_margin_h_enabled = true

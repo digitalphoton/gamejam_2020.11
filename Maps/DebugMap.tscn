@@ -511,7 +511,7 @@ current_player = 1
 [node name="Player" parent="." groups=[
 "Player",
 ] instance=ExtResource( 5 )]
-position = Vector2( 2176, 4224 )
+position = Vector2( 8476.43, 3012.38 )
 
 [node name="Player2" parent="." groups=[
 "Player",
@@ -531,7 +531,7 @@ position = Vector2( 13325.1, 5033.35 )
 script = SubResource( 51 )
 
 [node name="BoxHeavy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 7311.1, 9177.88 )
+position = Vector2( 10695.8, 1627.35 )
 script = SubResource( 52 )
 
 [node name="Pulley" type="Node2D" parent="."]

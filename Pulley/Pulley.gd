@@ -7,7 +7,7 @@ extends Node2D
 onready var plat1 = get_node("platform1")
 onready var plat2 = get_node("platform2")
 
-export var player_mass = 1.5
+export var player_mass = 1
 export var speed_modifier = 500
 
 var total_mass_plat1 = 0
@@ -24,7 +24,7 @@ func _ready():
 	plat2_init_x_pos = plat2.get_position().x
 	pass # Replace with function body.
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if !plat1.get_position().x == plat1_init_x_pos:
 		plat1.position.x = plat1_init_x_pos
 	if !plat2.get_position().x == plat2_init_x_pos:
@@ -39,9 +39,9 @@ func _physics_process(_delta):
 		if result_move <= 0:
 #			print("plat1 must up")
 			result_move = 0
-		
-	plat1.move_and_slide(Vector2(0, result_move*speed_modifier),Vector2(0, -1))
-	plat2.move_and_slide(Vector2(0, -result_move*speed_modifier),Vector2(0, -1))
+	
+	plat1.position.y += result_move*speed_modifier*delta
+	plat2.position.y -= result_move*speed_modifier*delta
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
