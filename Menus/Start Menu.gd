@@ -2,7 +2,11 @@
 extends Control
 
 #Nodes
-onready var main = get_parent()
+onready var main 		= get_parent()
+onready var SFX_node	= main.get_node("SFX")
+
+#Variáveis
+var SFX_buttonpress = "res://Sounds/button_press.ogg"
 
 #Sinais
 signal menu_bgm
@@ -15,9 +19,13 @@ func _process(delta):
 		get_tree().quit()
 
 func _on_START_pressed():
+	SFX_node.stream = load(SFX_buttonpress)
+	SFX_node.play()
 	main.change_scene(self,"res://Menus/Map_Select.tscn")
 
 func _on_QUIT_pressed():
+	SFX_node.stream = load(SFX_buttonpress)
+	SFX_node.play()
 	get_tree().quit()
 
 func _on_Main_ready():

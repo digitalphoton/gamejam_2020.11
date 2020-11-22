@@ -21,6 +21,7 @@ func _deferred_change_scene(scene,new_scene_path):
 	current_scene = l.instance()
 	self.add_child(current_scene)
 
+#BGMs
 func _on_Start_Menu_menu_bgm():
 	if BGM.stream != load(BGMs.Menu):
 		BGM.stream = load(BGMs.Menu)

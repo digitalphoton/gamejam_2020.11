@@ -20,6 +20,10 @@ __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 strength = 200
+SFX = {
+"Jump": "res://Sounds/jump.ogg",
+"KeyGrab": "res://Sounds/key_grab.ogg"
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

@@ -8,6 +8,8 @@ export var active = false
 export var strength = 500
 export var camlimits = {"Left":-10000000,"Top":-10000000,"Right":10000000,"Bottom":10000000}
 
+#Efeitos Sonóros
+export var SFX = {}
 
 #Respawn Data
 export(String,FILE,"*.tscn") var spawn_scene_path
@@ -24,13 +26,14 @@ onready var controller 	= get_node("Controller")
 onready var camera 		= get_node("Camera2D")
 onready var sprite		= get_node("Sprite")
 onready var area		= get_node("Area2D")
+onready var SFX_node	= main.get_node("SFX")
 
 func _ready():
 	pass
 
 func _process(_delta):
 	if active == true and Input.is_action_just_pressed("ui_cancel"):
-		main.change_scene(main.get_child(1),"res://Menus/Map_Select.tscn")
+		main.change_scene(main.get_child(main.get_child_count() - 1),"res://Menus/Map_Select.tscn")
 
 func _physics_process(_delta):
 	#Muda o current da camera de acordo com a var active
@@ -46,12 +49,16 @@ func _physics_process(_delta):
 	#Player controls. Teclas podem ser encontradas em Project>>Project Settings>>Input Map
 	player_input.right = Input.is_action_pressed("Right")
 	player_input.left = Input.is_action_pressed("Left")
-	player_input.jump = Input.is_action_pressed("Jump")
+	player_input.jump = Input.is_action_just_pressed("Jump")
 	
 	player_input.pickup = Input.is_action_pressed("Pickup")
 	
 	#Look at deez moves moving
 	controller.move(player_input.right,player_input.left,player_input.jump)
+	
+	if self.is_on_floor() and player_input.jump:
+		SFX_node.stream = load(SFX.Jump)
+		SFX_node.play()
 	
 	#Detecta colisões com corpos
 	for i in get_slide_count():
@@ -70,7 +77,11 @@ func _physics_process(_delta):
 	if bodies != null:
 		for i in bodies:
 			if i.is_in_group("Items"):
-				if player_input.pickup:
+				if Input.is_action_just_pressed("Pickup"):
+					SFX_node.stream = load(SFX.KeyGrab)
+					SFX_node.play()
+				
+				if player_input.pickup and active:
 					var force_dir = (self.get_global_position() - i.get_global_position()).normalized()
 					i.apply_central_impulse(force_dir * strength)
 

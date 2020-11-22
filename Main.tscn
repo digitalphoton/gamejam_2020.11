@@ -14,5 +14,7 @@ BGMs = {
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+
 [node name="Start Menu" parent="." instance=ExtResource( 1 )]
 [connection signal="ready" from="." to="Start Menu" method="_on_Main_ready"]
