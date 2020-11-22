@@ -26,3 +26,5 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 drag_margin_h_enabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]

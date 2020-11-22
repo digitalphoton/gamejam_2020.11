@@ -21,6 +21,7 @@ var dead = false
 onready var controller 	= get_node("Controller")
 onready var camera 		= get_node("Camera2D")
 onready var sprite		= get_node("Sprite")
+onready var raycast		= get_node("RayCast2D")
 
 func _ready():
 	pass
@@ -53,6 +54,7 @@ func _physics_process(_delta):
 		if body.is_in_group("MovableObjects"):
 			
 			#Use a força!
+			
 			var force_dir = Vector2(body.global_position - self.global_position).normalized()
 			body.apply_central_impulse(force_dir * strength)
 
