@@ -580,10 +580,10 @@ shape = SubResource( 55 )
 [node name="Door" parent="." instance=ExtResource( 6 )]
 
 [node name="Door" parent="Door" index="0"]
-position = Vector2( 3937.17, 4140.82 )
+position = Vector2( 2616, 4096 )
 
 [node name="Button" parent="Door" index="1"]
-position = Vector2( 8881.26, 9469.58 )
+position = Vector2( 2904, 9472 )
 [connection signal="body_entered" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_entered"]
 [connection signal="body_exited" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_exited"]
 [connection signal="body_entered" from="Pulley/platform2/Area2Dplat2" to="Pulley" method="_on_Area2Dplat2_body_entered"]
