@@ -31,6 +31,7 @@ func collision():
 	is_colliding = false
 	colliding_obj = []
 	for body in A2D.get_overlapping_bodies():
+		print(body)
 		#Detecta se o objeto que colidiu pode ser movido
 		if body.is_in_group("ButtonTriggers"):
 			colliding_obj.append(body)
