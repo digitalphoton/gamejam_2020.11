@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Menus/Minecraft.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menus/Map_Select.gd" type="Script" id=2]
@@ -11,6 +11,10 @@ font_data = ExtResource( 1 )
 size = 128
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 128
+font_data = ExtResource( 1 )
+
 [node name="Map_Select" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,7 +22,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-maps = [ "res://Maps/DebugMap.tscn" ]
+maps = [ "res://Maps/DebugMap.tscn", "res://Maps/NewMapIHope.tscn" ]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -49,7 +53,8 @@ align = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 384.0
 margin_right = 1632.0
-margin_bottom = 518.0
+margin_bottom = 752.0
+custom_constants/separation = 100
 
 [node name="DebugMap" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 margin_right = 1632.0
@@ -59,4 +64,15 @@ custom_fonts/font = SubResource( 2 )
 custom_constants/hseparation = 64
 action_mode = 0
 text = "DEBUG MAP"
+
+[node name="NewMapIHope" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 234.0
+margin_right = 1632.0
+margin_bottom = 368.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 3 )
+custom_constants/hseparation = 64
+action_mode = 0
+text = "NewMapIHope"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/DebugMap" to="." method="_on_DebugMap_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/NewMapIHope" to="." method="_on_NewMapIHope_pressed"]
