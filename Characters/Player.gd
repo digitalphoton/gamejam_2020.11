@@ -15,10 +15,12 @@ export var spawn_coordinates = Vector2()
 
 #Variáveis
 var player_input = {}
+var bodies
 
 #Nodes
 onready var controller 	= get_node("Controller")
 onready var camera 		= get_node("Camera2D")
+onready var area		= get_node("Area2D")
 
 func _ready():
 	pass
@@ -36,6 +38,8 @@ func _physics_process(_delta):
 	player_input.left = Input.is_action_pressed("Left")
 	player_input.jump = Input.is_action_pressed("Jump")
 	
+	player_input.pickup = Input.is_action_pressed("Pickup")
+	
 	#Look at deez moves moving
 	controller.move(player_input.right,player_input.left,player_input.jump)
 	
@@ -50,6 +54,15 @@ func _physics_process(_delta):
 			#Use a força!
 			var force_dir = Vector2(body.global_position - self.global_position).normalized()
 			body.apply_impulse(Vector2(0,128),force_dir * strength)
+	
+	bodies = area.get_overlapping_bodies()
+	
+	if bodies != null:
+		for i in bodies:
+			if i.is_in_group("Items"):
+				if player_input.pickup:
+					var force_dir = (self.get_global_position() - i.get_global_position()).normalized()
+					i.apply_central_impulse(force_dir * strength)
 
 func set_camlimits(left = -10000000,top = -10000000,right = 10000000,bottom = 10000000):
 	camera.limit_left 	= left

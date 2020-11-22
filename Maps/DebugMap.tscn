@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Map Components/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Map Components/256x256_autotile_tilemap1.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Map Components/Pulley/Pulley.gd" type="Script" id=7]
 [ext_resource path="res://icon.png" type="Texture" id=8]
 [ext_resource path="res://Map Components/Button/Button.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Map Components/Key.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 64, 64, 256, 64, 256, 192, 192, 192, 192, 256, 64, 256, 64, 64, 64, 64 )
@@ -585,6 +586,65 @@ func _physics_process(_delta):
 
 "
 
+[sub_resource type="GDScript" id=59]
+script/source = "#Key.gd
+extends RigidBody2D
+
+#Variáveis exportadas
+export(NodePath) var target_path
+
+#Variáveis
+var bodies
+var target
+
+#Sinais
+signal unlock
+
+func _ready():
+	#Pega o node que vai ser desbloqueado com a chave
+	target = get_node(target_path)
+	
+func _process(delta):
+	#Detecta colisões
+	bodies = get_colliding_bodies()
+	
+	if bodies != null:
+		for i in bodies:
+			
+			#Verifica se o node que foi colidido é o alvo a ser desbloqueado
+			if i == target:
+				
+				#Usa a chave
+				emit_signal(\"unlock\")
+				self.queue_free()
+"
+
+[sub_resource type="GDScript" id=58]
+script/source = "extends RigidBody2D
+
+#Variáveis exportadas
+export var y_dif = 512
+export var vel = 4
+
+#Variáveis
+var y = 0
+var doorOn = false
+
+func _ready():
+	pass
+
+func _physics_process(_delta):
+	if doorOn and y < y_dif:
+		self.position += Vector2(0, -vel)
+		y += vel
+	if not doorOn and y > 0:
+		self.position += Vector2(0, vel)
+		y += -vel
+
+func _on_Key_unlock():
+	doorOn = true
+"
+
 [node name="DebugMap" type="Node2D"]
 script = ExtResource( 4 )
 map_size = Vector2( 51, 18 )
@@ -668,6 +728,15 @@ script = SubResource( 56 )
 [node name="Button" parent="." instance=ExtResource( 9 )]
 position = Vector2( 10368, 9216 )
 script = SubResource( 57 )
+
+[node name="Key" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1408, 9344 )
+script = SubResource( 59 )
+target_path = NodePath("../Door2")
+
+[node name="Door2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 4480, 9344 )
+script = SubResource( 58 )
 [connection signal="body_entered" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_entered"]
 [connection signal="body_exited" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_exited"]
 [connection signal="body_entered" from="Pulley/platform2/Area2Dplat2" to="Pulley" method="_on_Area2Dplat2_body_entered"]
@@ -675,3 +744,4 @@ script = SubResource( 57 )
 [connection signal="body_entered" from="Pulley/Limiter" to="Pulley" method="_on_Limiter_body_entered"]
 [connection signal="body_exited" from="Pulley/Limiter" to="Pulley" method="_on_Limiter_body_exited"]
 [connection signal="button_Trigger" from="Button" to="Door" method="_on_Button_button_Trigger"]
+[connection signal="unlock" from="Key" to="Door2" method="_on_Key_unlock"]

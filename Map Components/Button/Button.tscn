@@ -8,6 +8,8 @@
 script = ExtResource( 4 )
 
 [node name="Rampa" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 5
 
 [node name="Esquerda" type="Sprite" parent="Rampa"]
 position = Vector2( -208.5, 0 )
@@ -27,6 +29,8 @@ visible = false
 polygon = PoolVector2Array( 161, -27, 256, 32, 161, 32 )
 
 [node name="Middle" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 5
 mode = 1
 
 [node name="Meio" type="Sprite" parent="Middle"]
@@ -39,6 +43,8 @@ polygon = PoolVector2Array( -164, 31, -164, -28, -148, -33, 142, -33, 158, -28, 
 
 [node name="Area2D" type="Area2D" parent="Middle"]
 visible = false
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Middle/Area2D"]
 visible = false
