@@ -32,11 +32,11 @@ func _on_Map_Select_menu_bgm():
 		BGM.play()
 
 func _on_DebugMap_map_bgm():
-	if BGM.stream != load(BGMs.LevelMusic):
-		BGM.stream = load(BGMs.LevelMusic)
+	if BGM.stream != load(BGMs.Map):
+		BGM.stream = load(BGMs.Map)
 		BGM.play()
 
 func _on_NewMapIHope_map_bgm():
-	if BGM.stream != load(BGMs.LevelMusic):
-		BGM.stream = load(BGMs.LevelMusic)
+	if BGM.stream != load(BGMs.Map):
+		BGM.stream = load(BGMs.Map)
 		BGM.play()
