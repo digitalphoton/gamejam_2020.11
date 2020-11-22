@@ -16,6 +16,7 @@ func _ready():
 	n_maps = maps.size()
 
 func _process(_delta):
+	print("Hello!")
 	if Input.is_action_just_pressed("ui_cancel"):
 		main.change_scene(main.get_child(0),"res://Menus/Start Menu.tscn")
 
