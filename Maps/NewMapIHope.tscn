@@ -9,7 +9,8 @@
 [ext_resource path="res://Map Components/Box.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Map Components/Button/Button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Map Components/Pulley/Pulley.gd" type="Script" id=9]
-[ext_resource path="res://Map Components/Key.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sounds/Music/level.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Map Components/Key.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Map Components/Pit.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -789,12 +790,15 @@ polygon = PoolVector2Array( -768, -2432, -768, -768, -1024, -768, -1024, -4224, 
 [node name="Pit" parent="." instance=ExtResource( 13 )]
 position = Vector2( 9600, 10880 )
 
+[node name="BG Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
 [node name="Door5" parent="." instance=ExtResource( 6 )]
 position = Vector2( 12672, 4864 )
 script = SubResource( 57 )
 vel = 8
 
-[node name="Key" parent="." instance=ExtResource( 10 )]
+[node name="Key" parent="." instance=ExtResource( 11 )]
 position = Vector2( 12160, 2560 )
 target_path = NodePath("../Door5")
 
@@ -803,7 +807,7 @@ position = Vector2( 12928, 4864 )
 script = SubResource( 58 )
 vel = 8
 
-[node name="Key2" parent="." instance=ExtResource( 10 )]
+[node name="Key2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 12544, 7680 )
 target_path = NodePath("../Door6")
 [connection signal="button_Trigger" from="Button" to="Door" method="_on_Button_button_Trigger"]
