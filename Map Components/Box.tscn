@@ -17,6 +17,7 @@ extents = Vector2( 128, 128 )
 mass = 60.0
 =======
 [node name="Box" type="RigidBody2D" groups=[
+"ButtonTriggers",
 "MovableObjects",
 ]]
 input_pickable = true

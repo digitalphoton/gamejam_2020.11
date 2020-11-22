@@ -1,9 +1,20 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=6 format=2]
+=======
+[gd_scene load_steps=7 format=2]
+>>>>>>> Stashed changes
 
 [ext_resource path="res://Maps/DebugMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Map Components/Box.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Button/Button.tscn" type="PackedScene" id=4]
+<<<<<<< Updated upstream
+=======
+[ext_resource path="res://Button/Porta.tscn" type="PackedScene" id=5]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 50.0
+>>>>>>> Stashed changes
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 50.0
@@ -13,6 +24,10 @@ friction = 50.0
 ]]
 
 [node name="DebugMap" parent="." instance=ExtResource( 1 )]
+<<<<<<< Updated upstream
+=======
+position = Vector2( 0, -32 )
+>>>>>>> Stashed changes
 
 [node name="Player" parent="." groups=[
 "MovableObjects",
@@ -25,7 +40,14 @@ physics_material_override = SubResource( 1 )
 
 [node name="Button" parent="." instance=ExtResource( 4 )]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 position = Vector2( 4360, 3352 )
 =======
 position = Vector2( 2624, 1808 )
+>>>>>>> Stashed changes
+=======
+visible = false
+position = Vector2( 2624, 1808 )
+
+[node name="Door" parent="." instance=ExtResource( 5 )]
 >>>>>>> Stashed changes

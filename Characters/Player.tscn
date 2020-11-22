@@ -8,7 +8,9 @@
 radius = 128.0
 height = 0.0
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"ButtonTriggers",
+]]
 script = ExtResource( 3 )
 strength = 200
 

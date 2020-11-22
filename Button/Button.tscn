@@ -40,6 +40,7 @@ position = Vector2( 3, 1 )
 polygon = PoolVector2Array( -164, 31, -164, -28, -148, -33, 142, -33, 158, -28, 158, 31 )
 
 [node name="Area2D" type="Area2D" parent="Middle"]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Middle/Area2D"]
 visible = false
