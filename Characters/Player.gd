@@ -30,7 +30,7 @@ func _ready():
 
 func _process(_delta):
 	if active == true and Input.is_action_just_pressed("ui_cancel"):
-		main.change_scene(main.get_child(1),"res://Menus/Map_Select.tscn")
+		main.change_scene(main.get_child(0),"res://Menus/Map_Select.tscn")
 
 func _physics_process(_delta):
 	#Muda o current da camera de acordo com a var active
@@ -70,7 +70,7 @@ func _physics_process(_delta):
 	if bodies != null:
 		for i in bodies:
 			if i.is_in_group("Items"):
-				if player_input.pickup and active:
+				if player_input.pickup:
 					var force_dir = (self.get_global_position() - i.get_global_position()).normalized()
 					i.apply_central_impulse(force_dir * strength)
 
