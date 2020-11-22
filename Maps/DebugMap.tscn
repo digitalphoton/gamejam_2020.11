@@ -1,13 +1,14 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Map Components/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Map Components/256x256_autotile_tilemap1.png" type="Texture" id=2]
 [ext_resource path="res://Map Components/Box.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Maps/DebugMap.gd" type="Script" id=4]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Button/Porta.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Pulley/Pulley.gd" type="Script" id=7]
+[ext_resource path="res://Map Components/Button/Porta.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Map Components/Pulley/Pulley.gd" type="Script" id=7]
 [ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://Map Components/Button/Button.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 64, 64, 256, 64, 256, 192, 192, 192, 192, 256, 64, 256, 64, 64, 64, 64 )
@@ -501,6 +502,90 @@ extents = Vector2( 768, 64 )
 [sub_resource type="RectangleShape2D" id=55]
 extents = Vector2( 2368, 701.373 )
 
+[sub_resource type="GDScript" id=56]
+script/source = "extends RigidBody2D
+
+#Variáveis exportadas
+export var y_dif = 512
+export var vel = 4
+
+#Variáveis
+var y = 0
+var doorOn = false
+
+func _ready():
+	pass
+
+func _physics_process(_delta):
+	if doorOn and y < y_dif:
+		self.position += Vector2(0, -vel)
+		y += vel
+	if not doorOn and y > 0:
+		self.position += Vector2(0, vel)
+		y += -vel
+
+func _on_Button_button_Trigger(buttonOn):
+	doorOn = buttonOn
+"
+
+[sub_resource type="GDScript" id=57]
+script/source = "extends Node2D
+
+
+#Nodes
+onready var A2D 	= get_node(\"Middle/Area2D\")
+onready var Middle 	= get_node(\"Middle\")
+
+#Variáveis exportadas
+export var y_dif = 24
+export var vel = 4
+
+#Variáveis
+var y = 0
+var is_colliding
+var colliding_obj
+var buttonOn = false
+
+#Sinais
+signal button_Trigger
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Middle.set_contact_monitor(true)
+	Middle.set_max_contacts_reported(2048)
+	
+func _process(_delta):
+	print(buttonOn)
+	if not buttonOn and y > y_dif/2:
+		buttonOn = true
+		emit_signal(\"button_Trigger\", buttonOn)
+	if buttonOn and y < y_dif/2:
+		buttonOn = false
+		emit_signal(\"button_Trigger\", buttonOn)
+
+func collision():
+	is_colliding = false
+	colliding_obj = []
+	for body in A2D.get_overlapping_bodies():
+		#Detecta se o objeto que colidiu pode ser movido
+		if body.is_in_group(\"ButtonTriggers\"):
+			colliding_obj.append(body)
+			is_colliding = true
+
+func _physics_process(_delta):
+	collision()
+	if is_colliding and y < y_dif:
+		Middle.position += Vector2(0, vel)
+		y += vel
+		for body in colliding_obj:
+			body.position += Vector2(0, vel)
+	if is_colliding == false and y > 0:
+		Middle.position += Vector2(0, -vel)
+		y += -vel
+
+
+"
+
 [node name="DebugMap" type="Node2D"]
 script = ExtResource( 4 )
 map_size = Vector2( 51, 18 )
@@ -578,17 +663,16 @@ shape = SubResource( 54 )
 shape = SubResource( 55 )
 
 [node name="Door" parent="." instance=ExtResource( 6 )]
+position = Vector2( 3072, 4224 )
+script = SubResource( 56 )
 
-[node name="Door" parent="Door" index="0"]
-position = Vector2( 3937.17, 4140.82 )
-
-[node name="Button" parent="Door" index="1"]
-position = Vector2( 8881.26, 9469.58 )
+[node name="Button" parent="." instance=ExtResource( 9 )]
+position = Vector2( 10368, 9216 )
+script = SubResource( 57 )
 [connection signal="body_entered" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_entered"]
 [connection signal="body_exited" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_exited"]
 [connection signal="body_entered" from="Pulley/platform2/Area2Dplat2" to="Pulley" method="_on_Area2Dplat2_body_entered"]
 [connection signal="body_exited" from="Pulley/platform2/Area2Dplat2" to="Pulley" method="_on_Area2Dplat2_body_exited"]
 [connection signal="body_entered" from="Pulley/Limiter" to="Pulley" method="_on_Limiter_body_entered"]
 [connection signal="body_exited" from="Pulley/Limiter" to="Pulley" method="_on_Limiter_body_exited"]
-
-[editable path="Door"]
+[connection signal="button_Trigger" from="Button" to="Door" method="_on_Button_button_Trigger"]
