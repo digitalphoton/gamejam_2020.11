@@ -12,6 +12,7 @@ var target
 signal unlock
 
 func _ready():
+	self.set_can_sleep(false)
 	target = get_node(target_path)
 
 func _process(_delta):
