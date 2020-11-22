@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Map Components/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Map Components/256x256_autotile_tilemap1.png" type="Texture" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://Map Components/Pit.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Map Components/Button/Button.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Map Components/Key.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Map Components/Pulley/New_Pulley.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 64, 64, 256, 64, 256, 192, 192, 192, 192, 256, 64, 256, 64, 64, 64, 64 )
@@ -506,16 +505,6 @@ extents = Vector2( 768, 64 )
 extents = Vector2( 2368, 701.373 )
 
 [sub_resource type="GDScript" id=56]
-script/source = "#Pit.gd
-#The most complicated of scripts, surpasses the complexity of a neural network
-extends Node2D
-
-func _on_Area2D_body_entered(body):
-	if body.is_in_group(\"Player\"):
-		body.kill()
-"
-
-[sub_resource type="GDScript" id=57]
 script/source = "extends RigidBody2D
 
 #Variáveis exportadas
@@ -541,7 +530,7 @@ func _on_Button_button_Trigger(buttonOn):
 	doorOn = buttonOn
 "
 
-[sub_resource type="GDScript" id=58]
+[sub_resource type="GDScript" id=57]
 script/source = "extends Node2D
 
 
@@ -598,7 +587,7 @@ func _physics_process(_delta):
 
 "
 
-[sub_resource type="GDScript" id=59]
+[sub_resource type="GDScript" id=58]
 script/source = "#Key.gd
 extends RigidBody2D
 
@@ -629,6 +618,16 @@ func _process(delta):
 				#Usa a chave
 				emit_signal(\"unlock\")
 				self.queue_free()
+"
+
+[sub_resource type="GDScript" id=59]
+script/source = "#Pit.gd
+#The most complicated of scripts, surpasses the complexity of a neural network
+extends Node2D
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group(\"Player\"):
+		body.kill()
 "
 
 [sub_resource type="GDScript" id=60]
@@ -735,39 +734,31 @@ shape = SubResource( 55 )
 
 [node name="Door" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3072, 4224 )
-script = SubResource( 57 )
+script = SubResource( 56 )
 
 [node name="Button" parent="." instance=ExtResource( 10 )]
 position = Vector2( 10368, 9216 )
-script = SubResource( 58 )
+script = SubResource( 57 )
 
 [node name="Key" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1408, 9344 )
-script = SubResource( 59 )
+script = SubResource( 58 )
 target_path = NodePath("../Door2")
-
-[node name="Button" parent="Door" index="1"]
-position = Vector2( 8881.26, 9469.58 )
 
 [node name="Pit" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1536, 4480 )
-script = SubResource( 56 )
+script = SubResource( 59 )
 
-[node name="CollisionShape2D" parent="Pit/Area2D" index="0"]
-position = Vector2( 0, 128 )
 [node name="Door2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 4480, 9344 )
 script = SubResource( 60 )
-
-[node name="Node2D" parent="." instance=ExtResource( 12 )]
-position = Vector2( 9728, 8320 )
 [connection signal="body_entered" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_entered"]
 [connection signal="body_exited" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_exited"]
 [connection signal="body_entered" from="Pulley/platform2/Area2Dplat2" to="Pulley" method="_on_Area2Dplat2_body_entered"]
 [connection signal="body_exited" from="Pulley/platform2/Area2Dplat2" to="Pulley" method="_on_Area2Dplat2_body_exited"]
 [connection signal="body_entered" from="Pulley/Limiter" to="Pulley" method="_on_Limiter_body_entered"]
 [connection signal="body_exited" from="Pulley/Limiter" to="Pulley" method="_on_Limiter_body_exited"]
-
-
+[connection signal="button_Trigger" from="Button" to="Door" method="_on_Button_button_Trigger"]
+[connection signal="unlock" from="Key" to="Door2" method="_on_Key_unlock"]
 
 [editable path="Door"]
