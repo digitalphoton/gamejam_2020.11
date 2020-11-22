@@ -2,23 +2,24 @@
 extends RigidBody2D
 
 #Variáveis exportadas
-export(NodePath) var target
+export(NodePath) var target_path
 
 #Variáveis
 var bodies
-var target_id
+var target
 
 #Sinais
 signal unlock
 
 func _ready():
-	target_id = target.get_object_id()
+	self.set_can_sleep(false)
+	target = get_node(target_path)
 
-func _process(delta):
+func _process(_delta):
 	bodies = get_colliding_bodies()
 	
 	if bodies != null:
 		for i in bodies:
-			if i.get_object_id() == target_id:
+			if i == target:
 				emit_signal("unlock")
 				self.queue_free()
