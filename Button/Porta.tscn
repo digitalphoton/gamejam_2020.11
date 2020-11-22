@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Button/Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://StaticBody2D.gd" type="Script" id=2]
+[ext_resource path="res://Button/Porta.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 256 )
+
+[node name="Door" type="Node2D"]
+
+[node name="Door" type="RigidBody2D" parent="."]
+mode = 1
+can_sleep = false
+angular_damp = 0.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Door"]
+texture = ExtResource( 3 )
+
+[node name="Button" parent="." instance=ExtResource( 1 )]
+
+[node name="Middle" parent="Button" index="1"]
+can_sleep = false
+
+[node name="Area2D" parent="Button/Middle" index="2"]
+visible = true
+[connection signal="button_Trigger" from="Button/Middle" to="Door" method="_on_Middle_button_Trigger"]
+
+[editable path="Button"]
