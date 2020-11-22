@@ -10,11 +10,30 @@ var is_colliding
 var colliding_obj
 export var vel = 2
 onready var A2D = get_node("Area2D")
+<<<<<<< Updated upstream
+var doorOn
+=======
+>>>>>>> Stashed changes
+
+signal Button_Trigger
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_contact_monitor(true)
 	set_max_contacts_reported(2048)
+<<<<<<< Updated upstream
+	
+func _process(_delta):
+	if doorOn and y < y_dif/2:
+		doorOn = false
+		emit_signal("Button_Trigger", doorOn)
+	if not doorOn and y > y_dif/2:
+		doorOn = true
+		emit_signal("Button_Trigger", doorOn)
+=======
+
+
+>>>>>>> Stashed changes
 
 func collision():
 	is_colliding = false
@@ -27,7 +46,11 @@ func collision():
 			is_colliding = true
 	
 
+<<<<<<< Updated upstream
+func _physics_process(_delta):
+=======
 func _physics_process(delta):
+>>>>>>> Stashed changes
 	collision()
 	if is_colliding and y < y_dif:
 		self.position += Vector2(0, vel)

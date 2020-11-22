@@ -17,11 +17,15 @@ friction = 50.0
 [node name="Player" parent="." groups=[
 "MovableObjects",
 ] instance=ExtResource( 2 )]
-position = Vector2( 2432, 3200 )
+position = Vector2( 1608, 1552 )
 
 [node name="Box" parent="." instance=ExtResource( 3 )]
-position = Vector2( 3456, 3200 )
+position = Vector2( 2080, 1600 )
 physics_material_override = SubResource( 1 )
 
 [node name="Button" parent="." instance=ExtResource( 4 )]
+<<<<<<< Updated upstream
 position = Vector2( 4360, 3352 )
+=======
+position = Vector2( 2624, 1808 )
+>>>>>>> Stashed changes
