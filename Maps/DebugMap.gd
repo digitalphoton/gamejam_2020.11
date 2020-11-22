@@ -8,9 +8,6 @@ onready var tilemap = get_node("TileMap")
 #Variáveis exportadas
 export var layered_map = true
 
-#Quantidade de camadas
-export var n_layers 			= 0
-
 #Tamanho do mapa pra todas as camadas
 export var map_size 			= Vector2(0,0)
 
