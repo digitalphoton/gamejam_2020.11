@@ -735,6 +735,7 @@ shape = SubResource( 55 )
 [node name="Door" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3072, 4224 )
 script = SubResource( 56 )
+vel = 8
 
 [node name="Button" parent="." instance=ExtResource( 10 )]
 position = Vector2( 10368, 9216 )
@@ -746,12 +747,13 @@ script = SubResource( 58 )
 target_path = NodePath("../Door2")
 
 [node name="Pit" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1536, 4480 )
+position = Vector2( 1537.68, 4648.18 )
 script = SubResource( 59 )
 
 [node name="Door2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 4480, 9344 )
 script = SubResource( 60 )
+vel = 8
 [connection signal="body_entered" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_entered"]
 [connection signal="body_exited" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_exited"]
 [connection signal="body_entered" from="Pulley/platform2/Area2Dplat2" to="Pulley" method="_on_Area2Dplat2_body_entered"]
