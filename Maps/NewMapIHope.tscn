@@ -10,7 +10,7 @@
 [ext_resource path="res://Map Components/Button/Button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Map Components/Pulley/Pulley.gd" type="Script" id=9]
 [ext_resource path="res://Map Components/Key.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Sounds/Music/level.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Sounds/Music/level1.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Map Components/Pit.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
