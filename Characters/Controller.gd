@@ -54,9 +54,9 @@ func move(input_right,input_left,input_jump):
 		#Pra pular
 		if kb.is_on_floor() and input_jump == true:
 			motion.y = -jump_height
-		
-		#Executa o movimento
-		motion = kb.move_and_slide(motion,UP,false,4,0.785398,false)
+	
+	#Executa o movimento
+	motion = kb.move_and_slide(motion,UP,false,4,0.785398,false)
 
 func verify():
 	if kb.is_class("KinematicBody2D"):
