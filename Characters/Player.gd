@@ -22,3 +22,19 @@ func _process(delta):
 	
 	#Look at deez moves moving
 	controller.move(player_input.right,player_input.left,player_input.jump)
+<<<<<<< Updated upstream
+=======
+	
+	#Detecta colisões com corpos
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		var body = collision.collider
+		
+		#Detecta se o objeto que colidiu pode ser movido
+		if body.is_in_group("MovableObjects"):
+			
+			#Use a força!
+			var force_dir = Vector2(body.global_position - self.global_position).normalized()
+			body.apply_impulse(Vector2(0, 64), force_dir * strength)
+			
+>>>>>>> Stashed changes
