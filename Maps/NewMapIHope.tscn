@@ -661,7 +661,7 @@ func _on_Key2_unlock():
 	pass # Replace with function body.
 "
 
-[node name="DebugMap" type="Node2D"]
+[node name="NewMapIHope" type="Node2D"]
 script = ExtResource( 1 )
 map_size = Vector2( 50, 20 )
 spacing = 2
@@ -691,6 +691,7 @@ tile_data = PoolIntArray( 65535, 0, 7, 0, 0, 196612, 1, 0, 196612, 2, 0, 196612,
 [node name="Door" parent="." instance=ExtResource( 6 )]
 position = Vector2( 6528, 10752 )
 script = SubResource( 51 )
+vel = 8
 
 [node name="Button" parent="." instance=ExtResource( 8 )]
 position = Vector2( 5120, 10496 )
@@ -698,6 +699,7 @@ position = Vector2( 5120, 10496 )
 [node name="Door2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 8960, 7424 )
 script = SubResource( 52 )
+vel = 8
 
 [node name="Button2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 768, 5120 )
@@ -705,6 +707,7 @@ position = Vector2( 768, 5120 )
 [node name="Door3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 9728, 3840 )
 script = SubResource( 53 )
+vel = 8
 
 [node name="Button3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 6528, 7680 )
@@ -712,6 +715,7 @@ position = Vector2( 6528, 7680 )
 [node name="Door4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 9600, 3840 )
 script = SubResource( 54 )
+vel = 8
 
 [node name="Button4" parent="." instance=ExtResource( 8 )]
 position = Vector2( 7296, 7680 )
@@ -788,18 +792,20 @@ position = Vector2( 9600, 10880 )
 [node name="Door5" parent="." instance=ExtResource( 6 )]
 position = Vector2( 12672, 4864 )
 script = SubResource( 57 )
+vel = 8
 
 [node name="Key" parent="." instance=ExtResource( 10 )]
 position = Vector2( 12160, 2560 )
-target_path = NodePath("../Door5")
+target_path = NodePath("../../NewMapIHope/Door5")
 
 [node name="Door6" parent="." instance=ExtResource( 6 )]
 position = Vector2( 12928, 4864 )
 script = SubResource( 58 )
+vel = 8
 
 [node name="Key2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 12544, 7680 )
-target_path = NodePath("../Door6")
+target_path = NodePath("../../NewMapIHope/Door6")
 [connection signal="button_Trigger" from="Button" to="Door" method="_on_Button_button_Trigger"]
 [connection signal="button_Trigger" from="Button2" to="Door2" method="_on_Button2_button_Trigger"]
 [connection signal="button_Trigger" from="Button3" to="Door3" method="_on_Button3_button_Trigger"]

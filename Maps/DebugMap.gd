@@ -4,6 +4,7 @@ extends Node
 
 #Nodes
 onready var tilemap = get_node("TileMap")
+onready var main	= get_parent()
 
 #Variáveis exportadas
 export var layered_map = true
@@ -26,7 +27,13 @@ var cell_size
 #Coisas pra inicializar o array de players
 var players = []
 
+#Sinais
+signal map_bgm
+
 func _ready():
+	connect("map_bgm",main,"_on_DebugMap_map_bgm")
+	emit_signal("map_bgm")
+	
 	#Pega o tamanho das células do tilemap, yes i know they're gonna remain as 256x256 but screw it
 	cell_size = tilemap.cell_size.x
 	
@@ -57,6 +64,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Select Player 1"):
 		players[current_player].active = false
 		players[0].active = true
+		current_player = 0
 	elif Input.is_action_just_pressed("Select Player 2"):
 		players[current_player].active = false
 		players[1].active = true
