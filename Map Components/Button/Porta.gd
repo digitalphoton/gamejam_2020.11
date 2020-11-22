@@ -18,3 +18,8 @@ func _physics_process(_delta):
 	if not doorOn and y > 0:
 		self.position += Vector2(0, vel)
 		y += -vel
+
+
+func _on_Button_button_Trigger(buttonOn):
+	doorOn = buttonOn
+	pass # Replace with function body.
