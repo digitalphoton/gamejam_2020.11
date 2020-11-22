@@ -9,7 +9,24 @@ script = ExtResource( 6 )
 
 [node name="Start Menu" parent="." instance=ExtResource( 1 )]
 
-[node name="Main Theme" type="AudioStreamPlayer" parent="."]
+[node name="VBoxContainer" parent="Start Menu/MarginContainer" index="0"]
+margin_left = 1872.0
+margin_right = 4272.0
+
+[node name="Label" parent="Start Menu/MarginContainer/VBoxContainer" index="0"]
+margin_right = 2400.0
+text = "Until we meet again"
+
+[node name="VBoxContainer" parent="Start Menu/MarginContainer/VBoxContainer" index="1"]
+margin_right = 2400.0
+
+[node name="START" parent="Start Menu/MarginContainer/VBoxContainer/VBoxContainer" index="0"]
+margin_right = 2400.0
+
+[node name="QUIT" parent="Start Menu/MarginContainer/VBoxContainer/VBoxContainer" index="1"]
+margin_right = 2400.0
+
+[node name="Main Theme" type="AudioStreamPlayer" parent="Start Menu"]
 stream = ExtResource( 2 )
 autoplay = true
 
