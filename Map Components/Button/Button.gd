@@ -24,7 +24,6 @@ func _ready():
 	Middle.set_max_contacts_reported(2048)
 	
 func _process(_delta):
-	print(buttonOn)
 	if not buttonOn and y > y_dif/2:
 		buttonOn = true
 		emit_signal("button_Trigger", buttonOn)
