@@ -14,7 +14,7 @@ signal unlock
 func _ready():
 	target = get_node(target_path)
 
-func _process(delta):
+func _process(_delta):
 	bodies = get_colliding_bodies()
 	
 	if bodies != null:
