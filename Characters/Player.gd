@@ -49,7 +49,7 @@ func _physics_process(_delta):
 			
 			#Use a força!
 			var force_dir = Vector2(body.global_position - self.global_position).normalized()
-			body.apply_central_impulse(force_dir * strength)
+			body.apply_impulse(Vector2(0,128),force_dir * strength)
 
 func set_camlimits(left = -10000000,top = -10000000,right = 10000000,bottom = 10000000):
 	camera.limit_left 	= left

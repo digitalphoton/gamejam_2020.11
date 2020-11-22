@@ -15,6 +15,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
+strength = 200
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
