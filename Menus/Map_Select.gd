@@ -12,8 +12,14 @@ export var maps = []
 #Variáveis
 var n_maps
 
+#Sinais
+signal menu_bgm
+
 func _ready():
 	n_maps = maps.size()
+	
+	connect("menu_bgm",main,"_on_Map_Select_menu_bgm")
+	emit_signal("menu_bgm")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):

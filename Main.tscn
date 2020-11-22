@@ -6,11 +6,13 @@
 [node name="Main" type="Node"]
 script = ExtResource( 6 )
 BGMs = {
-"Map": "res://Music/level.ogg",
-"StartMenu": "res://Music/menu.ogg"
+"Level1": "res://Music/level1.ogg",
+"Level2": "res://Music/level2.ogg",
+"Level3": "res://Music/level3.ogg",
+"Menu": "res://Music/menu.ogg"
 }
 
-[node name="Start Menu" parent="." instance=ExtResource( 1 )]
-
 [node name="BGM" type="AudioStreamPlayer" parent="."]
+
+[node name="Start Menu" parent="." instance=ExtResource( 1 )]
 [connection signal="ready" from="." to="Start Menu" method="_on_Main_ready"]
