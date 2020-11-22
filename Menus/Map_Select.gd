@@ -17,3 +17,7 @@ func _ready():
 
 func _on_DebugMap_pressed():
 	main.change_scene(self,maps[0])
+
+
+func _on_NewMapIHope_pressed():
+	main.change_scene(self,maps[1])
