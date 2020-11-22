@@ -28,3 +28,4 @@ shape = SubResource( 1 )
 drag_margin_h_enabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true

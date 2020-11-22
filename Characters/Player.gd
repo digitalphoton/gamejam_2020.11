@@ -5,7 +5,7 @@ extends KinematicBody2D
 #Stats
 
 export var active = false
-export var strength = 500
+export var strength = 100
 export var camlimits = {"Left":-10000000,"Top":-10000000,"Right":10000000,"Bottom":10000000}
 
 
@@ -50,13 +50,40 @@ func _physics_process(_delta):
 		var collision = get_slide_collision(i)
 		var body = collision.collider
 		
-		#Detecta se o objeto que colidiu pode ser movido
-		if body.is_in_group("MovableObjects"):
+		#Detecta se o corpo existe
+		if body != null:
 			
-			#Use a força!
+		#Detecta se o objeto que colidiu pode ser movido e como deve ser movido
+			if body.is_in_group("MovableObjects"):
+				var collision_point
+				var force_offset
+				
+				#Seta o ponto final do raycast que é basicamente uma seta que reporta a colisão que acontecer mais perto da sua origem
+				raycast.set_cast_to(body.global_position - self.global_position)
+				
+				#Pega o ponto de colisão entre o player e o objeto
+				collision_point = raycast.get_collision_point()
+				
+				#Seta o offset do impulso a ser aplicado + a direção
+				force_offset = collision_point - body.get_global_position()
+				var force_dir = Vector2(collision_point - self.global_position).normalized()
+				
+				#Use a força!
+				body.apply_impulse(force_offset,force_dir * strength)
 			
-			var force_dir = Vector2(body.global_position - self.global_position).normalized()
-			body.apply_central_impulse(force_dir * strength)
+			#Mesma coisa só que pra plataformas giratórias que eu tive que setar só o eixo y do destino do raycast enquanto o anterior setava no centro do corpo que colidiu
+			elif body.is_in_group("RotatingPlatforms"):
+				var collision_point
+				var force_offset
+				
+				raycast.set_cast_to(Vector2(0,body.global_position.y - self.global_position.y))
+				collision_point = raycast.get_collision_point()
+				
+				force_offset = collision_point - body.get_global_position()
+				var force_dir = Vector2(collision_point - self.global_position).normalized()
+				
+				#Use a força!
+				body.apply_impulse(force_offset,force_dir * strength)
 
 func set_camlimits(left = -10000000,top = -10000000,right = 10000000,bottom = 10000000):
 	camera.limit_left 	= left
