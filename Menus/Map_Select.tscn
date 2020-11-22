@@ -45,7 +45,7 @@ Interacoes:
     moedas: cuidado pra nao deixar elas cairem
     Botoes: pisar em cima ou posicionar uma caixa
     Portas: cada porta tem um botao ou uma chave especifica, se nao funciona, deve ser outra
-    Polias(trecos vermelhos): vem em pares, se um player e/ou uma caixa forem posicionados sobre uma plataforma, e seu peso exceder o peso na outra plataforma, uma sobe, outra desce
+    Polias (trecos vermelhos): vem em pares, se um player e/ou uma caixa forem posicionados sobre uma plataforma, e seu peso exceder o peso na outra plataforma, uma sobe, outra desce
     Frustracaoo: um perigo escondido, ao falhar num pulo, pode ser que se abata e perca vontade de continuar (indicado pelos \"olhos\" apontando para baixo e recusa a se mover). Tera que reiniciar a fase.
     
 Seu objetivo: se encontrar com outro jogador, em uma sala a direita do spawn. Para apenas assim se libertar, ambos com as moedas coletadas pelo mapa"
