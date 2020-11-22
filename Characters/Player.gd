@@ -2,6 +2,10 @@
 extends KinematicBody2D
 
 #Variáveis exportáveis
+#Stats
+export var strength = 500
+
+#Respawn Data
 export(String,FILE,"*.tscn") var spawn_scene_path
 export var spawn_coordinates = Vector2()
 
@@ -22,8 +26,6 @@ func _process(delta):
 	
 	#Look at deez moves moving
 	controller.move(player_input.right,player_input.left,player_input.jump)
-<<<<<<< Updated upstream
-=======
 	
 	#Detecta colisões com corpos
 	for i in get_slide_count():
@@ -35,6 +37,5 @@ func _process(delta):
 			
 			#Use a força!
 			var force_dir = Vector2(body.global_position - self.global_position).normalized()
-			body.apply_impulse(Vector2(0, 64), force_dir * strength)
+			body.apply_central_impulse(force_dir * strength)
 			
->>>>>>> Stashed changes
