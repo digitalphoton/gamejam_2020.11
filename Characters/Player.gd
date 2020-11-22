@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 #Variáveis exportáveis
 #Stats
-export var strength = 500
+export var strength = 700
 
 #Respawn Data
 export(String,FILE,"*.tscn") var spawn_scene_path
@@ -18,7 +18,7 @@ onready var controller = get_node("Controller")
 func _ready():
 	pass
 
-func _process(delta):
+func _physics_process(delta):
 	#Player controls. Teclas podem ser encontradas em Project>>Project Settings>>Input Map
 	player_input.right = Input.is_action_pressed("Right")
 	player_input.left = Input.is_action_pressed("Left")
