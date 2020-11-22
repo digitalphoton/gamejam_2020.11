@@ -495,16 +495,16 @@ func _ready():
 	self.set_can_sleep(false)
 "
 
-[sub_resource type="RectangleShape2D" id=57]
+[sub_resource type="RectangleShape2D" id=53]
 extents = Vector2( 768, 64 )
 
-[sub_resource type="RectangleShape2D" id=58]
+[sub_resource type="RectangleShape2D" id=54]
 extents = Vector2( 768, 64 )
 
-[sub_resource type="RectangleShape2D" id=59]
+[sub_resource type="RectangleShape2D" id=55]
 extents = Vector2( 2368, 701.373 )
 
-[sub_resource type="GDScript" id=53]
+[sub_resource type="GDScript" id=56]
 script/source = "extends RigidBody2D
 
 #Variáveis exportadas
@@ -530,7 +530,7 @@ func _on_Button_button_Trigger(buttonOn):
 	doorOn = buttonOn
 "
 
-[sub_resource type="GDScript" id=54]
+[sub_resource type="GDScript" id=57]
 script/source = "extends Node2D
 
 
@@ -587,7 +587,7 @@ func _physics_process(_delta):
 
 "
 
-[sub_resource type="GDScript" id=55]
+[sub_resource type="GDScript" id=58]
 script/source = "#Key.gd
 extends RigidBody2D
 
@@ -620,7 +620,7 @@ func _process(delta):
 				self.queue_free()
 "
 
-[sub_resource type="GDScript" id=56]
+[sub_resource type="GDScript" id=59]
 script/source = "extends RigidBody2D
 
 #Variáveis exportadas
@@ -676,7 +676,7 @@ position = Vector2( 13325.1, 5033.35 )
 script = SubResource( 51 )
 
 [node name="BoxHeavy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 9856, 5760 )
+position = Vector2( 11264, 6656 )
 script = SubResource( 52 )
 
 [node name="Pulley" type="Node2D" parent="."]
@@ -687,7 +687,7 @@ script = ExtResource( 7 )
 position = Vector2( -1536, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pulley/platform1"]
-shape = SubResource( 57 )
+shape = SubResource( 53 )
 
 [node name="Sprite" type="Sprite" parent="Pulley/platform1"]
 modulate = Color( 1, 0, 0, 1 )
@@ -698,13 +698,13 @@ texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pulley/platform1/Area2Dplat1"]
 position = Vector2( 0, -128 )
-shape = SubResource( 58 )
+shape = SubResource( 54 )
 
 [node name="platform2" type="KinematicBody2D" parent="Pulley"]
 position = Vector2( 1536, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pulley/platform2"]
-shape = SubResource( 57 )
+shape = SubResource( 53 )
 
 [node name="Sprite" type="Sprite" parent="Pulley/platform2"]
 modulate = Color( 1, 0, 0, 1 )
@@ -715,29 +715,29 @@ texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pulley/platform2/Area2Dplat2"]
 position = Vector2( 0, -128 )
-shape = SubResource( 58 )
+shape = SubResource( 54 )
 
 [node name="Limiter" type="Area2D" parent="Pulley"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pulley/Limiter"]
-shape = SubResource( 59 )
+shape = SubResource( 55 )
 
 [node name="Door" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3072, 4224 )
-script = SubResource( 53 )
+script = SubResource( 56 )
 
 [node name="Button" parent="." instance=ExtResource( 9 )]
 position = Vector2( 10368, 9216 )
-script = SubResource( 54 )
+script = SubResource( 57 )
 
 [node name="Key" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1408, 9344 )
-script = SubResource( 55 )
+script = SubResource( 58 )
 target_path = NodePath("../Door2")
 
 [node name="Door2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 4480, 9344 )
-script = SubResource( 56 )
+script = SubResource( 59 )
 
 [node name="Node2D" parent="." instance=ExtResource( 11 )]
 position = Vector2( 9728, 8320 )
