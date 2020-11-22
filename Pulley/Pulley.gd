@@ -14,11 +14,21 @@ var total_mass_plat1 = 0
 var total_mass_plat2 = 0
 var result_move = 0
 var flag = 0
+
+var plat1_init_x_pos = 0
+var plat2_init_x_pos = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	plat1_init_x_pos = plat1.get_position().x
+	plat2_init_x_pos = plat2.get_position().x
 	pass # Replace with function body.
 
 func _physics_process(_delta):
+	if !plat1.get_position().x == plat1_init_x_pos:
+		plat1.position.x = plat1_init_x_pos
+	if !plat2.get_position().x == plat2_init_x_pos:
+		plat2.position.x = plat2_init_x_pos
 	#verifica se houveram colisões
 	result_move = total_mass_plat1 - total_mass_plat2
 	if flag == 1:
