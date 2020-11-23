@@ -59,6 +59,6 @@ margin_top = 260.0
 margin_right = 2848.0
 margin_bottom = 388.0
 custom_fonts/font = SubResource( 2 )
-text = "Pressione ESPACO para tentar de novo"
+text = "Pressione BACKSPACE para tentar de novo"
 align = 1
 valign = 1

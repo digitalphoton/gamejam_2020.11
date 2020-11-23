@@ -35,12 +35,13 @@ func _ready():
 
 func _process(_delta):
 	#Tela de morte
-	if dead and Input.is_action_just_pressed("Jump"):
-		current_map.retry()
+	if active:
+		if Input.is_action_just_pressed("Retry"):
+			current_map.retry()
 	
-	#Voltar para o menu
-	if active == true and Input.is_action_just_pressed("ui_cancel"):
-		main.change_scene(main.get_child(main.get_child_count() - 1),"res://Menus/MapSelect.tscn")
+		#Voltar para o menu
+		if Input.is_action_just_pressed("ui_cancel"):
+			main.change_scene(main.get_child(main.get_child_count() - 1),"res://Menus/MapSelect.tscn")
 
 func _physics_process(_delta):
 	#Muda o current da camera de acordo com a var active
