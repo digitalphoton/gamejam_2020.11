@@ -72,3 +72,9 @@ func _process(_delta):
 		players[current_player].active = false
 		players[1].active = true
 		current_player = 1
+
+func retry():
+	main.change_scene(self,"res://Maps/DebugMap.tscn")
+
+func _on_Goal_victory():
+	main.change_scene(self,"res://Menus/VictoryScene.tscn")

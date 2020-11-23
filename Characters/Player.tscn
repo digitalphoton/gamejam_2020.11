@@ -13,6 +13,9 @@ script/source = "#controller.gd
 #Parente tem que ser KinematicBody2D
 extends Node
 
+#Scenes
+onready var death_scene = preload(\"res://Menus/DeathScene.tscn\")
+
 #Variáveis constantes
 const RIGHT = Vector2(1,0)
 const LEFT 	= Vector2(-1,0)

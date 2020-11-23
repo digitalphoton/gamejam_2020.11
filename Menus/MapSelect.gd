@@ -16,9 +16,6 @@ export(String,FILE,"*.ogg") var bgm
 var n_maps
 var SFX_buttonpress = "res://Sounds/button_press.ogg"
 
-#Sinais
-signal menu_bgm
-
 func _ready():
 	n_maps = maps.size()
 	
@@ -29,7 +26,7 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		main.change_scene(main.get_child(main.get_child_count() - 1),"res://Menus/Start Menu.tscn")
+		main.change_scene(main.get_child(main.get_child_count() - 1),"res://Menus/StartMenu.tscn")
 
 func _on_DebugMap_pressed():
 	SFX_node.stream = load(SFX_buttonpress)

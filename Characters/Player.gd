@@ -8,10 +8,6 @@ export var active = false
 export var strength = 300
 export var camlimits = {"Left":-10000000,"Top":-10000000,"Right":10000000,"Bottom":10000000}
 
-#Respawn Data
-export(String,FILE,"*.tscn") var spawn_scene_path
-export var spawn_coordinates = Vector2()
-
 #Variáveis
 var player_input = {}
 var dead = false
@@ -21,19 +17,30 @@ var bodies
 var SFX = {"Jump":"res://Sounds/jump.ogg","KeyGrab":"res://Sounds/key_grab.ogg"}
 
 #Nodes
-onready var main		= get_parent().get_parent()
+onready var main			= get_parent().get_parent()
+onready var current_map 	= main.get_child(main.get_child_count() - 1)
+onready var canvas_layer	= current_map.get_node("CanvasLayer")
+onready var SFX_node		= main.get_node("SFX")
+
 onready var controller 	= get_node("Controller")
 onready var camera 		= get_node("Camera2D")
 onready var sprite		= get_node("Sprite")
 onready var area		= get_node("Area2D")
-onready var SFX_node	= main.get_node("SFX")
+
+#Scenes
+onready var death_scene = preload("res://Menus/DeathScene.tscn")
 
 func _ready():
 	pass
 
 func _process(_delta):
+	#Tela de morte
+	if dead and Input.is_action_just_pressed("Jump"):
+		current_map.retry()
+	
+	#Voltar para o menu
 	if active == true and Input.is_action_just_pressed("ui_cancel"):
-		main.change_scene(main.get_child(main.get_child_count() - 1),"res://Menus/Map_Select.tscn")
+		main.change_scene(main.get_child(main.get_child_count() - 1),"res://Menus/MapSelect.tscn")
 
 func _physics_process(_delta):
 	#Muda o current da camera de acordo com a var active
@@ -97,4 +104,5 @@ func set_camlimits(left = -10000000,top = -10000000,right = 10000000,bottom = 10
 func kill():
 	sprite.set_flip_v(true)
 	dead = true
-	print("killed!")
+	var death_window = death_scene.instance()
+	canvas_layer.add_child(death_window)
