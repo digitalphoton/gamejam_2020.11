@@ -49,13 +49,11 @@ func _physics_process(_delta):
 	#Player controls. Teclas podem ser encontradas em Project>>Project Settings>>Input Map
 	player_input.right = Input.is_action_pressed("Right")
 	player_input.left = Input.is_action_pressed("Left")
-	player_input.jump = Input.is_action_pressed("Jump")
+	player_input.jump = Input.is_action_just_pressed("Jump")
 	
 	player_input.pickup = Input.is_action_pressed("Pickup")
 	
-	print(self.is_on_floor())
-	
-	if self.is_on_floor() and Input.is_action_just_pressed("Jump"):
+	if self.is_on_floor() and player_input.jump:
 		SFX_node.stream = load(SFX.Jump)
 		SFX_node.play()
 	
