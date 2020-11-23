@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Characters/player_sprite.png" type="Texture" id=1]
 [ext_resource path="res://Characters/Controller.tscn" type="PackedScene" id=2]
@@ -8,11 +8,83 @@
 radius = 128.0
 height = 0.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="GDScript" id=2]
+script/source = "#controller.gd
+#Parente tem que ser KinematicBody2D
+extends Node
+
+#Variáveis constantes
+const RIGHT = Vector2(1,0)
+const LEFT 	= Vector2(-1,0)
+const DOWN 	= Vector2(0,1)
+const UP 	= Vector2(0,-1)
+
+#Variáveis editáveis no Inspector
+export var acceleration = 350
+export var max_speed = 2000
+export var jump_height = 3500
+export var gravity = 200
+export var max_falling_speed = 2000
+
+#Variáveis
+var motion = Vector2()
+var input_enabled = true
+
+#Node
+onready var kb = self.get_parent()
+
+func _ready():
+	pass
+
+func move(input_right,input_left,input_jump):
+	#Verifica se o parente é do tipo exigido
+	if verify() == false:
+		print(\"Parent is invalid! Parent must be KinematicBody2D\")
+		return 0
+	
+	#Gravity power engage!
+	if !kb.is_on_floor():
+		motion.y += gravity
+		#Limita o poder da gravidade :C
+		motion.y = min(max_falling_speed,motion.y)
+	
+	#Checa se o input tá habilitado
+	if input_enabled == true:
+		#Pro movimento horizontal
+		if input_right == true and input_left == true:
+			motion.x = lerp(motion.x,0,0.4)
+		elif input_right == true:
+			motion.x += acceleration
+			motion.x = min(max_speed,motion.x)
+		elif input_left == true:
+			motion.x -= acceleration
+			motion.x = max(-max_speed,motion.x)
+		else:
+			motion.x = lerp(motion.x,0,0.4)
+		
+		#Pra pular
+		if kb.is_on_floor() and input_jump == true:
+			motion.y = -jump_height
+	else:
+		motion.x = lerp(motion.x,0,0.2)
+	
+	#Executa o movimento
+	motion = kb.move_and_slide(motion,UP,false,4,0.785398,false)
+
+func verify():
+	if kb.is_class(\"KinematicBody2D\"):
+		return true
+	else:
+		print(\"Failed to verify\")
+		return false
+"
+
+[sub_resource type="CircleShape2D" id=3]
 radius = 512.0
 
 [node name="Player" type="KinematicBody2D" groups=[
 "ButtonTriggers",
+"Player",
 ]]
 collision_mask = 2
 script = ExtResource( 3 )
@@ -20,6 +92,10 @@ __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 strength = 200
+SFX = {
+"Jump": "res://Sounds/jump.ogg",
+"KeyGrab": "res://Sounds/key_grab.ogg"
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -28,6 +104,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Controller" parent="." instance=ExtResource( 2 )]
+script = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 drag_margin_h_enabled = true
@@ -36,4 +113,4 @@ drag_margin_h_enabled = true
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )

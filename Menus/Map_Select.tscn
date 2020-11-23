@@ -108,6 +108,6 @@ size_flags_vertical = 5
 custom_fonts/font = SubResource( 4 )
 custom_constants/hseparation = 64
 action_mode = 0
-text = "NewMapIHope"
+text = "Level 1"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/DebugMap" to="." method="_on_DebugMap_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/NewMapIHope" to="." method="_on_NewMapIHope_pressed"]

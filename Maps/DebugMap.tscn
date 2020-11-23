@@ -661,17 +661,20 @@ script = ExtResource( 4 )
 map_size = Vector2( 51, 18 )
 spacing = 2
 number_of_players = 2
-current_player = 1
 
-[node name="Player" parent="." groups=[
-"Player",
-] instance=ExtResource( 5 )]
-position = Vector2( 2176, 4224 )
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2304, 4224 )
+SFX = {
+"Jump": "res://Sounds/jump.ogg",
+"KeyGrab": "res://Sounds/key_grab.ogg"
+}
 
-[node name="Player2" parent="." groups=[
-"Player",
-] instance=ExtResource( 5 )]
-position = Vector2( 8960, 9344 )
+[node name="Player2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 7296, 9344 )
+SFX = {
+"Jump": "res://Sounds/jump.ogg",
+"KeyGrab": "res://Sounds/key_grab.ogg"
+}
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 position = Vector2( 7, 0 )
@@ -735,6 +738,7 @@ shape = SubResource( 55 )
 [node name="Door" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3072, 4224 )
 script = SubResource( 56 )
+y_dif = 1024
 vel = 8
 
 [node name="Button" parent="." instance=ExtResource( 10 )]
@@ -753,6 +757,7 @@ script = SubResource( 59 )
 [node name="Door2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 4480, 9344 )
 script = SubResource( 60 )
+y_dif = 1024
 vel = 8
 [connection signal="body_entered" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_entered"]
 [connection signal="body_exited" from="Pulley/platform1/Area2Dplat1" to="Pulley" method="_on_Area2Dplat1_body_exited"]
