@@ -9,7 +9,7 @@ export var strength = 500
 export var camlimits = {"Left":-10000000,"Top":-10000000,"Right":10000000,"Bottom":10000000}
 
 #Efeitos Sonóros
-export var SFX = {}
+export var SFX = {"Jump":"res://Sounds/jump.ogg","KeyGrab":"res://Sounds/key_grab.ogg"}
 
 #Respawn Data
 export(String,FILE,"*.tscn") var spawn_scene_path
@@ -49,16 +49,18 @@ func _physics_process(_delta):
 	#Player controls. Teclas podem ser encontradas em Project>>Project Settings>>Input Map
 	player_input.right = Input.is_action_pressed("Right")
 	player_input.left = Input.is_action_pressed("Left")
-	player_input.jump = Input.is_action_just_pressed("Jump")
+	player_input.jump = Input.is_action_pressed("Jump")
 	
 	player_input.pickup = Input.is_action_pressed("Pickup")
 	
-	#Look at deez moves moving
-	controller.move(player_input.right,player_input.left,player_input.jump)
+	print(self.is_on_floor())
 	
-	if self.is_on_floor() and player_input.jump:
+	if self.is_on_floor() and Input.is_action_just_pressed("Jump"):
 		SFX_node.stream = load(SFX.Jump)
 		SFX_node.play()
+	
+	#Look at deez moves moving
+	controller.move(player_input.right,player_input.left,player_input.jump)
 	
 	#Detecta colisões com corpos
 	for i in get_slide_count():
