@@ -663,14 +663,14 @@ spacing = 2
 number_of_players = 2
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2432, 4224 )
+position = Vector2( 2304, 4224 )
 SFX = {
 "Jump": "res://Sounds/jump.ogg",
 "KeyGrab": "res://Sounds/key_grab.ogg"
 }
 
 [node name="Player2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2048, 9344 )
+position = Vector2( 7296, 9344 )
 SFX = {
 "Jump": "res://Sounds/jump.ogg",
 "KeyGrab": "res://Sounds/key_grab.ogg"

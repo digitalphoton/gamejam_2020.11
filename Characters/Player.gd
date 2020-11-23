@@ -49,13 +49,14 @@ func _physics_process(_delta):
 	#Player controls. Teclas podem ser encontradas em Project>>Project Settings>>Input Map
 	player_input.right = Input.is_action_pressed("Right")
 	player_input.left = Input.is_action_pressed("Left")
-	player_input.jump = Input.is_action_just_pressed("Jump")
+	player_input.jump = Input.is_action_pressed("Jump")
 	
 	player_input.pickup = Input.is_action_pressed("Pickup")
 	
 	if self.is_on_floor() and player_input.jump:
-		SFX_node.stream = load(SFX.Jump)
-		SFX_node.play()
+		if active:
+			SFX_node.stream = load(SFX.Jump)
+			SFX_node.play()
 	
 	#Look at deez moves moving
 	controller.move(player_input.right,player_input.left,player_input.jump)
@@ -78,8 +79,9 @@ func _physics_process(_delta):
 		for i in bodies:
 			if i.is_in_group("Items"):
 				if Input.is_action_just_pressed("Pickup"):
-					SFX_node.stream = load(SFX.KeyGrab)
-					SFX_node.play()
+					if active:
+						SFX_node.stream = load(SFX.KeyGrab)
+						SFX_node.play()
 				
 				if player_input.pickup and active:
 					var force_dir = (self.get_global_position() - i.get_global_position()).normalized()
