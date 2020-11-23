@@ -5,12 +5,6 @@
 
 [node name="Main" type="Node"]
 script = ExtResource( 6 )
-BGMs = {
-"Level1": "res://Music/level1.ogg",
-"Level2": "res://Music/level2.ogg",
-"Level3": "res://Music/level3.ogg",
-"Menu": "res://Music/menu.ogg"
-}
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 

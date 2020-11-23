@@ -55,6 +55,8 @@ extents = Vector2( 2368, 1080.15 )
 
 [node name="platform1" type="RigidBody2D" parent="."]
 position = Vector2( -1536, 0 )
+collision_layer = 2
+collision_mask = 15
 gravity_scale = 0.0
 custom_integrator = true
 can_sleep = false
@@ -72,7 +74,8 @@ texture = ExtResource( 1 )
 "MovableObjects",
 ]]
 position = Vector2( 1536, 0 )
-collision_layer = 2147483652
+collision_layer = 2147483650
+collision_mask = 15
 custom_integrator = true
 can_sleep = false
 script = SubResource( 3 )

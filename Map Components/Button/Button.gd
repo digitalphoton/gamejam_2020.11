@@ -5,6 +5,9 @@ extends Node2D
 onready var A2D 	= get_node("Middle/Area2D")
 onready var Middle 	= get_node("Middle")
 
+onready var main 		= get_parent().get_parent()
+onready var SFX_node 	= main.get_node("SFX")
+
 #Variáveis exportadas
 export var y_dif = 24
 export var vel = 4
@@ -14,6 +17,8 @@ var y = 0
 var is_colliding
 var colliding_obj
 var buttonOn = false
+
+var buttonOn_sound = "res://Sounds/button_press.ogg"
 
 #Sinais
 signal button_Trigger
@@ -25,6 +30,9 @@ func _ready():
 	
 func _process(_delta):
 	if not buttonOn and y > y_dif/2:
+		SFX_node.stream = load(buttonOn_sound)
+		SFX_node.play()
+		
 		buttonOn = true
 		emit_signal("button_Trigger", buttonOn)
 	if buttonOn and y < y_dif/2:

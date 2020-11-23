@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Maps/DebugMap.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=2]
@@ -10,10 +10,8 @@
 [ext_resource path="res://Map Components/Button/Button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Map Components/Pulley/Pulley.gd" type="Script" id=9]
 [ext_resource path="res://Map Components/Key.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Music/level1.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Map Components/preda_autotile.tres" type="TileSet" id=12]
 [ext_resource path="res://Map Components/Pit.tscn" type="PackedScene" id=13]
-
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 64, 64, 256, 64, 256, 192, 192, 192, 192, 256, 64, 256, 64, 64, 64, 64 )
@@ -670,16 +668,13 @@ map_size = Vector2( 50, 20 )
 spacing = 2
 number_of_players = 2
 current_player = 1
+bgm = "res://Music/level3.ogg"
 
-[node name="Player" parent="." groups=[
-"Player",
-] instance=ExtResource( 2 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 681.65, 1164.2 )
 strength = 500
 
-[node name="Player2" parent="." groups=[
-"Player",
-] instance=ExtResource( 2 )]
+[node name="Player2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1001.34, 10881.7 )
 strength = 500
 
@@ -820,10 +815,6 @@ vel = 8
 [node name="Key2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 12544, 7680 )
 target_path = NodePath("../Door6")
-
-[node name="Level theme" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
-autoplay = true
 [connection signal="button_Trigger" from="Button" to="Door" method="_on_Button_button_Trigger"]
 [connection signal="button_Trigger" from="Button2" to="Door2" method="_on_Button2_button_Trigger"]
 [connection signal="button_Trigger" from="Button3" to="Door3" method="_on_Button3_button_Trigger"]

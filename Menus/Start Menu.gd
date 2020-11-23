@@ -3,13 +3,14 @@ extends Control
 
 #Nodes
 onready var main 		= get_parent()
+onready var BGM_node	= main.get_node("BGM")
 onready var SFX_node	= main.get_node("SFX")
 
-#Variáveis
-var SFX_buttonpress = "res://Sounds/button_press.ogg"
+#Variáveis exportaveis
+export(String,FILE,"*.ogg") var bgm
 
-#Sinais
-signal menu_bgm
+#Variáveis
+var sfx_buttonpress = "res://Sounds/button_press.ogg"
 
 func _ready():
 	pass
@@ -19,15 +20,17 @@ func _process(delta):
 		get_tree().quit()
 
 func _on_START_pressed():
-	SFX_node.stream = load(SFX_buttonpress)
+	SFX_node.stream = load(sfx_buttonpress)
 	SFX_node.play()
 	main.change_scene(self,"res://Menus/Map_Select.tscn")
 
 func _on_QUIT_pressed():
-	SFX_node.stream = load(SFX_buttonpress)
+	SFX_node.stream = load(sfx_buttonpress)
 	SFX_node.play()
 	get_tree().quit()
 
 func _on_Main_ready():
-	connect("menu_bgm",main,"_on_Start_Menu_menu_bgm")
-	emit_signal("menu_bgm")
+	#Toca a BGM
+	if BGM_node.stream != load(bgm):
+		BGM_node.stream = load(bgm)
+		BGM_node.play()

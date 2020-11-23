@@ -5,10 +5,12 @@ extends Control
 #Nodes
 onready var button_container = get_node("MarginContainer/VBoxContainer/VBoxContainer")
 onready var main = self.get_parent()
+onready var BGM_node = main.get_node("BGM")
 onready var SFX_node = main.get_node("SFX")
 
 #Variáveis exportáveis
 export var maps = []
+export(String,FILE,"*.ogg") var bgm
 
 #Variáveis
 var n_maps
@@ -20,8 +22,10 @@ signal menu_bgm
 func _ready():
 	n_maps = maps.size()
 	
-	connect("menu_bgm",main,"_on_Map_Select_menu_bgm")
-	emit_signal("menu_bgm")
+	#Toca a BGM
+	if BGM_node.stream != load(bgm):
+		BGM_node.stream = load(bgm)
+		BGM_node.play()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):

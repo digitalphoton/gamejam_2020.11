@@ -3,8 +3,9 @@
 extends Node
 
 #Nodes
-onready var tilemap = get_node("TileMap")
-onready var main 	= get_parent()
+onready var tilemap 	= get_node("TileMap")
+onready var main 		= get_parent()
+onready var BGM_node	= main.get_node("BGM")
 
 #Variáveis exportadas
 export var layered_map = true
@@ -21,18 +22,21 @@ export var number_of_players 	= 0
 #Active Player o número colocado aqui é o default
 export var current_player 		= 0
 
+#Música do mapa
+export(String,FILE,"*.ogg") var bgm
+
 #Variáveis
 var cell_size
 
 #Coisas pra inicializar o array de players
 var players = []
 
-#Sinais
-signal map_bgm
-
 func _ready():
-	connect("map_bgm",main,"_on_DebugMap_map_bgm")
-	emit_signal("map_bgm")
+	#Toca a BGM
+	if BGM_node.stream != load(bgm):
+		BGM_node.stream = load(bgm)
+		BGM_node.play()
+	
 	#Pega o tamanho das células do tilemap, yes i know they're gonna remain as 256x256 but screw it
 	cell_size = tilemap.cell_size.x
 	

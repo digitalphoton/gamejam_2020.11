@@ -5,11 +5,8 @@ extends KinematicBody2D
 #Stats
 
 export var active = false
-export var strength = 500
+export var strength = 300
 export var camlimits = {"Left":-10000000,"Top":-10000000,"Right":10000000,"Bottom":10000000}
-
-#Efeitos Sonóros
-export var SFX = {"Jump":"res://Sounds/jump.ogg","KeyGrab":"res://Sounds/key_grab.ogg"}
 
 #Respawn Data
 export(String,FILE,"*.tscn") var spawn_scene_path
@@ -19,6 +16,9 @@ export var spawn_coordinates = Vector2()
 var player_input = {}
 var dead = false
 var bodies
+
+#Efeitos Sonóros
+var SFX = {"Jump":"res://Sounds/jump.ogg","KeyGrab":"res://Sounds/key_grab.ogg"}
 
 #Nodes
 onready var main		= get_parent().get_parent()
@@ -54,7 +54,7 @@ func _physics_process(_delta):
 	player_input.pickup = Input.is_action_pressed("Pickup")
 	
 	if self.is_on_floor() and player_input.jump:
-		if active:
+		if active and !dead:
 			SFX_node.stream = load(SFX.Jump)
 			SFX_node.play()
 	
@@ -71,21 +71,22 @@ func _physics_process(_delta):
 			
 			#Use a força!
 			var force_dir = Vector2(body.global_position - self.global_position).normalized()
-			body.apply_impulse(Vector2(0,128),force_dir * strength)
+			body.apply_central_impulse(force_dir * strength)
 	
 	bodies = area.get_overlapping_bodies()
 	
 	if bodies != null:
 		for i in bodies:
 			if i.is_in_group("Items"):
-				if Input.is_action_just_pressed("Pickup"):
-					if active:
-						SFX_node.stream = load(SFX.KeyGrab)
-						SFX_node.play()
-				
-				if player_input.pickup and active:
-					var force_dir = (self.get_global_position() - i.get_global_position()).normalized()
-					i.apply_central_impulse(force_dir * strength)
+				if !dead:
+					if Input.is_action_just_pressed("Pickup"):
+						if active:
+							SFX_node.stream = load(SFX.KeyGrab)
+							SFX_node.play()
+					
+					if player_input.pickup and active:
+						var force_dir = (self.get_global_position() - i.get_global_position()).normalized()
+						i.apply_central_impulse(force_dir * strength)
 
 func set_camlimits(left = -10000000,top = -10000000,right = 10000000,bottom = 10000000):
 	camera.limit_left 	= left

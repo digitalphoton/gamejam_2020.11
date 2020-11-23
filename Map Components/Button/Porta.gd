@@ -32,6 +32,6 @@ func _physics_process(_delta):
 
 func _on_Button_button_Trigger(buttonOn):
 	doorOn = buttonOn
-	pass # Replace with function body.
-	
-	
+
+func _on_Key_unlock():
+	doorOn = true
