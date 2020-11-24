@@ -2,6 +2,9 @@
 #Parente tem que ser KinematicBody2D
 extends Node
 
+#Scenes
+onready var death_scene = preload("res://Menus/DeathScene.tscn")
+
 #Variáveis constantes
 const RIGHT = Vector2(1,0)
 const LEFT 	= Vector2(-1,0)
@@ -11,7 +14,7 @@ const UP 	= Vector2(0,-1)
 #Variáveis editáveis no Inspector
 export var acceleration = 350
 export var max_speed = 2000
-export var jump_height = 3500
+export var jump_height = 4000
 export var gravity = 200
 export var max_falling_speed = 2000
 

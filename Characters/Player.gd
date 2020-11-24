@@ -24,7 +24,7 @@ onready var SFX_node		= main.get_node("SFX")
 
 onready var controller 	= get_node("Controller")
 onready var camera 		= get_node("Camera2D")
-onready var sprite		= get_node("Sprite")
+onready var sprite		= get_node("AnimatedSprite")
 onready var area		= get_node("Area2D")
 
 #Scenes
@@ -66,6 +66,15 @@ func _physics_process(_delta):
 			SFX_node.stream = load(SFX.Jump)
 			SFX_node.play()
 	
+	if player_input.right:
+		sprite.play("walk")
+		sprite.set_flip_h(false)
+	elif player_input.left:
+		sprite.play("walk")
+		sprite.set_flip_h(true)
+	else:
+		sprite.play("idle")
+	
 	#Look at deez moves moving
 	controller.move(player_input.right,player_input.left,player_input.jump)
 	
@@ -93,7 +102,7 @@ func _physics_process(_delta):
 							SFX_node.play()
 					
 					if player_input.pickup and active:
-						var force_dir = (self.get_global_position() - i.get_global_position()).normalized()
+						var force_dir = (self.get_node("Area2D").get_global_position() - i.get_global_position()).normalized()
 						i.apply_central_impulse(force_dir * strength)
 
 func set_camlimits(left = -10000000,top = -10000000,right = 10000000,bottom = 10000000):
