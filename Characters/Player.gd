@@ -67,10 +67,10 @@ func _physics_process(_delta):
 			SFX_node.play()
 	
 	if player_input.right:
-		sprite.play("walk")
+		sprite.play("run")
 		sprite.set_flip_h(false)
 	elif player_input.left:
-		sprite.play("walk")
+		sprite.play("run")
 		sprite.set_flip_h(true)
 	else:
 		sprite.play("idle")
