@@ -12,11 +12,11 @@ const DOWN 	= Vector2(0,1)
 const UP 	= Vector2(0,-1)
 
 #Variáveis editáveis no Inspector
-export var acceleration = 350
-export var max_speed = 2000
-export var jump_height = 4000
-export var gravity = 200
-export var max_falling_speed = 2000
+#export var acceleration = 58
+export var speed = 666
+export var jump_height = 1333
+export var gravity = 66
+export var max_falling_speed = 666
 
 #Variáveis
 var motion = Vector2()
@@ -34,8 +34,8 @@ func move(input_right,input_left,input_jump):
 		print("Parent is invalid! Parent must be KinematicBody2D")
 		return 0
 	
-	#Gravity power engage!
 	if !kb.is_on_floor():
+		#Gravity power engage!
 		motion.y += gravity
 		#Limita o poder da gravidade :C
 		motion.y = min(max_falling_speed,motion.y)
@@ -46,11 +46,9 @@ func move(input_right,input_left,input_jump):
 		if input_right == true and input_left == true:
 			motion.x = lerp(motion.x,0,0.4)
 		elif input_right == true:
-			motion.x += acceleration
-			motion.x = min(max_speed,motion.x)
+			motion.x = speed
 		elif input_left == true:
-			motion.x -= acceleration
-			motion.x = max(-max_speed,motion.x)
+			motion.x = -speed
 		else:
 			motion.x = lerp(motion.x,0,0.4)
 		
@@ -61,7 +59,10 @@ func move(input_right,input_left,input_jump):
 		motion.x = lerp(motion.x,0,0.2)
 	
 	#Executa o movimento
-	motion = kb.move_and_slide(motion,UP,false,4,0.785398,false)
+	if input_jump == true:
+		motion = kb.move_and_slide(motion,UP,false,4,0.785398,false)
+	else:
+		motion = kb.move_and_slide_with_snap(motion,Vector2(0,gravity),UP,false,4,0.785398,false)
 
 func verify():
 	if kb.is_class("KinematicBody2D"):
