@@ -8,7 +8,7 @@ onready var plat1 = get_node("platform1")
 onready var plat2 = get_node("platform2")
 
 export var player_mass = 1.5
-export var speed_modifier = 500
+export var speed_modifier = 100
 
 var total_mass_plat1 = 0
 var total_mass_plat2 = 0

@@ -1,8 +1,8 @@
 extends RigidBody2D
 
 #Variáveis exportadas
-export var y_dif = 1024
-export var vel = 8
+export var y_dif = 192
+export var vel = 4
 
 #Variáveis
 var y = 0

@@ -5,7 +5,7 @@ extends KinematicBody2D
 #Stats
 
 export var active = false
-export var strength = 200
+export var strength = 600
 export var camlimits = {"Left":-10000000,"Top":-10000000,"Right":10000000,"Bottom":10000000}
 
 #Variáveis
@@ -62,7 +62,15 @@ func _physics_process(_delta):
 				#Testa se o player bateu numa parede
 				#Se sim toca a animação idle
 				if self.is_on_wall():
-					sprite.play("idle")
+					#Testa se o player bateu num objeto movível ao invés de uma parede
+					for i in get_slide_count():
+						var collision = get_slide_collision(i)
+						var body = collision.collider
+						#Detecta se o objeto que colidiu pode ser movido
+						if body.is_in_group("MovableObjects"):
+							sprite.play("run")
+						else:
+							sprite.play("idle")
 				#Se não toca as animações normalmente
 				else:
 					#Toca run quando o player vai pra direita ou pra esquerda
@@ -93,7 +101,7 @@ func _physics_process(_delta):
 				#Detecta se o objeto que colidiu pode ser movido
 				if body.is_in_group("MovableObjects"):
 					#Use a força!
-					var force_dir = Vector2(body.global_position - self.global_position).normalized()
+					var force_dir = Vector2(body.global_position.x - self.global_position.x,0).normalized()
 					body.apply_central_impulse(force_dir * strength)
 			
 			#Detecta os corpos dentro da área de força

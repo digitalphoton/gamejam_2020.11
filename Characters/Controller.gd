@@ -13,12 +13,12 @@ const UP 	= Vector2(0,-1)
 
 #Variáveis editáveis no Inspector
 #export var acceleration = 58
-export var speed = 666
-export var jump_height = 1333
-export var gravity = 66
-export var max_falling_speed = 666
+export var speed = 600
+export var jump_height = 1600
+export var max_falling_speed = 600
 
 #Variáveis
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var motion = Vector2()
 var input_enabled = true
 
@@ -59,7 +59,7 @@ func move(input_right,input_left,input_jump):
 		motion.x = lerp(motion.x,0,0.2)
 	
 	#Executa o movimento
-	if input_jump == true:
+	if input_jump == true or kb.is_on_wall():
 		motion = kb.move_and_slide(motion,UP,false,4,0.785398,false)
 	else:
 		motion = kb.move_and_slide_with_snap(motion,Vector2(0,gravity),UP,false,4,0.785398,false)

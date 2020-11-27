@@ -21,11 +21,7 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=6144
-window/size/height=3600
 window/size/resizable=false
-window/size/test_width=1024
-window/size/test_height=600
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
@@ -79,10 +75,7 @@ Retry={
 2d_physics/layer_2="StaticObjects"
 2d_physics/layer_3="MovableObjects"
 2d_physics/layer_4="Items"
-
-[physics]
-
-2d/default_gravity=3560
+2d_physics/layer_5="Area2D"
 
 [rendering]
 
