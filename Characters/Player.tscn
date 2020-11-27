@@ -47,14 +47,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 23 ), ExtResource( 13 ), ExtResource( 24 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 9 ), ExtResource( 16 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "run",
-"speed": 40.0
-}, {
 "frames": [ ExtResource( 33 ), ExtResource( 32 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 38 ), ExtResource( 27 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 39 ), ExtResource( 30 ), ExtResource( 36 ), ExtResource( 31 ), ExtResource( 37 ), ExtResource( 40 ) ],
 "loop": false,
 "name": "jump",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 23 ), ExtResource( 13 ), ExtResource( 24 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 9 ), ExtResource( 16 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "run",
 "speed": 40.0
 } ]
 
