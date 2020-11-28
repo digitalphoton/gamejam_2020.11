@@ -18,6 +18,7 @@ var player_node
 var player_strength
 var unlock_sound = "res://Sounds/door_open.ogg"
 var cell_size
+var default_respawn_pos
 var respawn = false
 
 #Sinais
@@ -27,6 +28,7 @@ func _ready():
 	self.set_can_sleep(false)
 	target = get_node(target_path)
 	cell_size = tilemap.cell_size.x
+	default_respawn_pos = self.global_position
 
 func _process(_delta):
 	if grabbed:
@@ -49,7 +51,10 @@ func _process(_delta):
 
 func _integrate_forces(state):
 	if respawn:
-		state.transform = Transform2D(0,(respawn_pos * cell_size) + (Vector2(cell_size / 2, cell_size * 3 / 4)))
+		if respawn_pos == Vector2(0,0):
+			state.transform = Transform2D(0,default_respawn_pos)
+		else:
+			state.transform = Transform2D(0,(respawn_pos * cell_size) + (Vector2(cell_size / 2, cell_size * 3 / 4)))
 		state.linear_velocity = Vector2()
 		respawn = false
 

@@ -1024,7 +1024,6 @@ tile_data = PoolIntArray( -1, 1, 7, -65536, 1, 196612, -65535, 1, 196612, -65534
 [node name="Box" parent="." instance=ExtResource( 8 )]
 modulate = Color( 0.196078, 0.392157, 1, 1 )
 position = Vector2( 1184, 928 )
-respawn_pos = Vector2( 18, 14 )
 
 [node name="Door" parent="." instance=ExtResource( 7 )]
 modulate = Color( 0, 1, 0.392157, 1 )
@@ -1049,7 +1048,6 @@ position = Vector2( 3808, 240 )
 [node name="Key" parent="." instance=ExtResource( 12 )]
 position = Vector2( 3680, 224 )
 target_path = NodePath("../Door2")
-respawn_pos = Vector2( 57, 3 )
 
 [node name="Pit" parent="." instance=ExtResource( 9 )]
 
