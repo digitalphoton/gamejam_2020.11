@@ -60,9 +60,9 @@ func move(input_right,input_left,input_jump):
 	
 	#Executa o movimento
 	if input_jump == true or kb.is_on_wall():
-		motion = kb.move_and_slide(motion,UP,false,4,0.785398,false)
+		motion = kb.move_and_slide_with_snap(motion,Vector2(0,0),UP,false,4,0.785398,false)
 	else:
-		motion = kb.move_and_slide_with_snap(motion,Vector2(0,gravity),UP,false,4,0.785398,false)
+		motion = kb.move_and_slide_with_snap(motion,Vector2(0,gravity / 4),UP,false,4,0.785398,false)
 
 func verify():
 	if kb.is_class("KinematicBody2D"):

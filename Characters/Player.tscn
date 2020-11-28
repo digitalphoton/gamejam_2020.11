@@ -40,11 +40,6 @@
 [ext_resource path="res://Characters/Resources/jump/Scene1_015.png" type="Texture" id=39]
 [ext_resource path="res://Characters/Resources/jump/Scene1_020.png" type="Texture" id=40]
 
-
-
-
-
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
