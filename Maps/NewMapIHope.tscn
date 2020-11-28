@@ -1,18 +1,23 @@
 [gd_scene load_steps=73 format=2]
 
-[ext_resource path="res://Maps/NewMapIHope.gd" type="Script" id=1]
+[ext_resource path="res://Maps/Scripts/NewMapIHope.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Maps/TileMap.gd" type="Script" id=3]
+[ext_resource path="res://Maps/Scripts/TileMap.gd" type="Script" id=3]
 [ext_resource path="res://Map Components/256x256_autotile_tilemap1.png" type="Texture" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
-[ext_resource path="res://Map Components/Button/Porta.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Map Components/Porta.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Map Components/Box.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Map Components/Button/Button.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Map Components/Pulley/Pulley.gd" type="Script" id=9]
+[ext_resource path="res://Map Components/Button.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Map Components/Scripts/Pulley.gd" type="Script" id=9]
 [ext_resource path="res://Map Components/Key.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Map Components/Goal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Map Components/preda_autotile.tres" type="TileSet" id=12]
 [ext_resource path="res://Map Components/Pit.tscn" type="PackedScene" id=13]
+
+
+
+
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 64, 64, 256, 64, 256, 192, 192, 192, 192, 256, 64, 256, 64, 64, 64, 64 )

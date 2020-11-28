@@ -1,13 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Menus/Minecraft.ttf" type="DynamicFontData" id=1]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 1 )
+[ext_resource path="res://Menus/Resources/MinecraftSmallFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Menus/Resources/MinecraftBigFont.tres" type="DynamicFont" id=2]
 
 [node name="DeathScene" type="MarginContainer"]
 anchor_left = 0.5
@@ -54,7 +48,7 @@ margin_bottom = 84.0
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 margin_right = 530.0
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "ONE OF THE PLAYERS IS DEDDO"
 align = 1
 valign = 1
@@ -63,7 +57,7 @@ valign = 1
 margin_top = 36.0
 margin_right = 530.0
 margin_bottom = 52.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 text = "Pressione BACKSPACE para tentar de novo"
 align = 1
 valign = 1
