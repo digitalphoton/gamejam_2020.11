@@ -5,7 +5,7 @@ extends KinematicBody2D
 #Stats
 
 export var active = false
-export var strength = 600
+export var strength = 300
 export var camlimits = {"Left":-10000000,"Top":-10000000,"Right":10000000,"Bottom":10000000}
 
 #Variáveis
@@ -25,7 +25,8 @@ onready var SFX_node		= main.get_node("SFX")
 onready var controller 	= get_node("Controller")
 onready var camera 		= get_node("Camera2D")
 onready var sprite		= get_node("AnimatedSprite")
-onready var area		= get_node("Area2D")
+onready var grabarea	= get_node("GrabArea")
+onready var floorcheck	= get_node("FloorCheck")
 
 #Scenes
 onready var death_scene = preload("res://Menus/DeathScene.tscn")
@@ -55,8 +56,25 @@ func _physics_process(_delta):
 			player_input.jump = Input.is_action_pressed("Jump")
 			player_input.pickup = Input.is_action_pressed("Pickup")
 			
-			#Gráficos + sons
-			#Testa se o player está no chão
+			#Gráficos
+			#This piece of code is kinda confusing so here's the gist of it:
+			#1: Player está no chão?
+			#Sim -> 2
+			#Não -> Toca a animação de Jump
+			#
+			#2: Player está encostando em alguma parede?
+			#Sim -> 4
+			#Não -> 3
+			#
+			#3: Player está apertando pra direita ou pra esquerda?
+			#Sim -> Toca a animação de run
+			#Não -> Toca a animação de idle
+			#
+			#4: Player está encostando em um objeto movível ou uma parede estática?
+			#Objeto Movível		-> 3 (yes this part is gonna be another piece of code that's pretty much the same as the code for 3)
+			#Parede Estática 	-> Toca a animação de idle
+			
+			#Testa se o player está no chão, precisa ser essa função pq o is_on_floor é exato demais e o player ficaria tendo convulsões na hora de descer nas plataformas das polias
 			if test_move(self.transform,Vector2(0,controller.gravity),false):
 				#Gráficos
 				#Testa se o player bateu numa parede
@@ -68,7 +86,8 @@ func _physics_process(_delta):
 						var body = collision.collider
 						#Detecta se o objeto que colidiu pode ser movido
 						if body.is_in_group("MovableObjects"):
-							sprite.play("run")
+							if player_input.right or player_input.left:
+								sprite.play("run")
 						else:
 							sprite.play("idle")
 				#Se não toca as animações normalmente
@@ -89,6 +108,7 @@ func _physics_process(_delta):
 			elif player_input.left:
 				sprite.set_flip_h(true)
 			
+			#Sons
 			#Som de pulo
 			if self.is_on_floor() and player_input.jump:
 				SFX_node.stream = load(SFX.Jump)
@@ -100,12 +120,19 @@ func _physics_process(_delta):
 				var body = collision.collider
 				#Detecta se o objeto que colidiu pode ser movido
 				if body.is_in_group("MovableObjects"):
-					#Use a força!
-					var force_dir = Vector2(body.global_position.x - self.global_position.x,0).normalized()
-					body.apply_central_impulse(force_dir * strength)
+					#Checa se o player está pisando em cima de uma caixa
+					bodies = floorcheck.get_overlapping_bodies()
+					
+					#Se o player não estiver pisando em cima da caixa exerce a força sobre a caixa
+					if bodies != null:
+						for j in bodies:
+							if !j.is_in_group("MovableObjects"):
+								#Use a força!
+								var force_dir = (body.global_position - self.global_position).normalized()
+								body.apply_central_impulse(force_dir * strength)
 			
 			#Detecta os corpos dentro da área de força
-			bodies = area.get_overlapping_bodies()
+			bodies = grabarea.get_overlapping_bodies()
 			
 			if bodies != null:
 				for i in bodies:
@@ -117,7 +144,7 @@ func _physics_process(_delta):
 						
 						#Pegar coisas com a força
 						if player_input.pickup:
-							var force_dir = (self.get_node("Area2D").get_global_position() - i.get_global_position()).normalized()
+							var force_dir = (self.get_node("GrabArea").get_global_position() - i.get_global_position()).normalized()
 							i.apply_central_impulse(force_dir * strength)
 			
 			#Look at deez moves moving
