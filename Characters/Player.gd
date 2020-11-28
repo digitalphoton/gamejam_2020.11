@@ -141,11 +141,7 @@ func _physics_process(_delta):
 						if Input.is_action_just_pressed("Pickup"):
 							SFX_node.stream = load(SFX.KeyGrab)
 							SFX_node.play()
-						
-						#Pegar coisas com a força
-						if player_input.pickup:
-							var force_dir = (self.get_node("GrabArea").get_global_position() - i.get_global_position()).normalized()
-							i.apply_central_impulse(force_dir * strength)
+							i.grabbed(self.get_path(),strength)
 			
 			#Look at deez moves moving
 			controller.move(player_input.right,player_input.left,player_input.jump)

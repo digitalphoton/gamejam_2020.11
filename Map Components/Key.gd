@@ -11,6 +11,9 @@ export(NodePath) var target_path
 #Variáveis
 var bodies
 var target
+var grabbed = false
+var player_node
+var player_strength
 var unlock_sound = "res://Sounds/door_open.ogg"
 
 #Sinais
@@ -21,6 +24,13 @@ func _ready():
 	target = get_node(target_path)
 
 func _process(_delta):
+	if grabbed:
+		var force_dir = (player_node.global_position - self.global_position).normalized()
+		self.apply_central_impulse(force_dir * player_strength)
+	
+	if Input.is_action_just_released("Pickup"):
+		grabbed = false
+	
 	bodies = get_colliding_bodies()
 	
 	if bodies != null:
@@ -31,3 +41,11 @@ func _process(_delta):
 				
 				emit_signal("unlock")
 				self.queue_free()
+
+func grabbed(node_path,strength):
+	player_node = get_node(node_path)
+	player_strength = strength
+	grabbed = true
+
+func released():
+	grabbed = false

@@ -63,7 +63,7 @@ radius = 16.0
 height = 88.0
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 320.0
+radius = 160.0
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 12, 8 )
