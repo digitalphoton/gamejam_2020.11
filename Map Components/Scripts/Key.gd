@@ -13,7 +13,7 @@ export var respawn_pos = Vector2(0,0)
 #Variáveis
 var bodies
 var target
-var grabbed = false
+var grabbing = false
 var player_node
 var player_strength
 var unlock_sound = "res://Sounds/door_open.ogg"
@@ -31,12 +31,12 @@ func _ready():
 	default_respawn_pos = self.global_position
 
 func _process(_delta):
-	if grabbed:
+	if grabbing:
 		var force_dir = (player_node.global_position - self.global_position).normalized()
 		self.apply_central_impulse(force_dir * player_strength)
 	
 	if Input.is_action_just_released("Pickup"):
-		grabbed = false
+		grabbing = false
 	
 	bodies = get_colliding_bodies()
 	
@@ -65,7 +65,7 @@ func _on_Button_button_Trigger(buttonOn):
 func grabbed(node_path,strength):
 	player_node = get_node(node_path)
 	player_strength = strength
-	grabbed = true
+	grabbing = true
 
 func released():
-	grabbed = false
+	grabbing = false

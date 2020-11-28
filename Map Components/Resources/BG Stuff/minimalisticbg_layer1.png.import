@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/minimalisticbg_layer1.png-f3f8d1e973e5926a40638b9d0ef0df4d.stex"
+path="res://.import/minimalisticbg_layer1.png-2aecd34a7f4f848e8251386f4c554a01.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Map Components/Resources/minimalisticbg_layer1.png"
-dest_files=[ "res://.import/minimalisticbg_layer1.png-f3f8d1e973e5926a40638b9d0ef0df4d.stex" ]
+source_file="res://Map Components/Resources/BG Stuff/minimalisticbg_layer1.png"
+dest_files=[ "res://.import/minimalisticbg_layer1.png-2aecd34a7f4f848e8251386f4c554a01.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/minimalisticbg_pattern.png-57ef6785f360f665a8ade0422f154d10.stex"
+path="res://.import/minimalistic tileset2.png-901e8e8e6a5d8b906d6b9ce33347935b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Map Components/Resources/minimalisticbg_pattern.png"
-dest_files=[ "res://.import/minimalisticbg_pattern.png-57ef6785f360f665a8ade0422f154d10.stex" ]
+source_file="res://Map Components/Resources/Tileset Stuff/minimalistic tileset2.png"
+dest_files=[ "res://.import/minimalistic tileset2.png-901e8e8e6a5d8b906d6b9ce33347935b.stex" ]
 
 [params]
 
@@ -19,8 +19,8 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
-flags/filter=true
+flags/repeat=0
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
