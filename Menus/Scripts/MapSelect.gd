@@ -14,7 +14,7 @@ export(String,FILE,"*.ogg") var bgm
 
 #Variáveis
 var n_maps
-var SFX_buttonpress = "res://Sounds/button_press.ogg"
+var SFX_buttonpress = "res://Sounds/button_press.wav"
 
 func _ready():
 	n_maps = maps.size()

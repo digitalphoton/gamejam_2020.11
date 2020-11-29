@@ -16,7 +16,7 @@ var target
 var grabbing = false
 var player_node
 var player_strength
-var unlock_sound = "res://Sounds/door_open.ogg"
+var unlock_sound = "res://Sounds/door_open.wav"
 var cell_size
 var default_respawn_pos
 var respawn = false

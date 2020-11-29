@@ -12,7 +12,7 @@ export(String,FILE,"*.ogg") var bgm
 
 #Variáveis
 var bgm_delay
-var victory_sound 	= "res://Sounds/complete.ogg"
+var victory_sound 	= "res://Sounds/complete.wav"
 
 func _ready():
 	SFX_node.stream = load(victory_sound)

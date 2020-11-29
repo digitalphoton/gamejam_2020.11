@@ -14,7 +14,7 @@ var dead = false
 var bodies
 
 #Efeitos Sonóros
-var SFX = {"Jump":"res://Sounds/jump.ogg","KeyGrab":"res://Sounds/key_grab.ogg"}
+var SFX = {"Jump":"res://Sounds/jump.wav","KeyGrab":"res://Sounds/key_grab.wav"}
 
 #Nodes
 onready var main			= get_parent().get_parent()

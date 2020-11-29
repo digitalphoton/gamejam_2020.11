@@ -18,7 +18,7 @@ var is_colliding
 var colliding_obj
 var buttonOn = false
 
-var buttonOn_sound = "res://Sounds/button_press.ogg"
+var buttonOn_sound = "res://Sounds/button_press.wav"
 
 #Sinais
 signal button_Trigger

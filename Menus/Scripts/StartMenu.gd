@@ -10,7 +10,7 @@ onready var SFX_node	= main.get_node("SFX")
 export(String,FILE,"*.ogg") var bgm
 
 #Variáveis
-var sfx_buttonpress = "res://Sounds/button_press.ogg"
+var sfx_buttonpress = "res://Sounds/button_press.wav"
 
 func _ready():
 	pass
