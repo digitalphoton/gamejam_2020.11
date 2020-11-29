@@ -11,7 +11,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-maps = [ "res://Maps/DebugMap.tscn", "res://Maps/NewMapIHope.tscn" ]
+maps = [ "res://Maps/DebugMap.tscn", "res://Maps/Map1.tscn" ]
 bgm = "res://Music/menu.ogg"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -56,7 +56,7 @@ custom_constants/hseparation = 64
 action_mode = 0
 text = "DEBUG MAP"
 
-[node name="NewMapIHope" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Map1" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 margin_top = 38.0
 margin_right = 204.0
 margin_bottom = 60.0
@@ -93,4 +93,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/DebugMap" to="." method="_on_DebugMap_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/NewMapIHope" to="." method="_on_NewMapIHope_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Map1" to="." method="_on_Map1_pressed"]

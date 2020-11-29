@@ -2,9 +2,8 @@
 
 [ext_resource path="res://Map Components/Scripts/Goal.gd" type="Script" id=1]
 
-
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 96, 80 )
+extents = Vector2( 64, 64 )
 
 [node name="Goal" type="Area2D"]
 collision_layer = 16

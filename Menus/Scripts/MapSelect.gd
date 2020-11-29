@@ -33,8 +33,7 @@ func _on_DebugMap_pressed():
 	SFX_node.play()
 	main.change_scene(self,maps[0])
 
-
-func _on_NewMapIHope_pressed():
+func _on_Map1_pressed():
 	SFX_node.stream = load(SFX_buttonpress)
 	SFX_node.play()
 	main.change_scene(self,maps[1])
