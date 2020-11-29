@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Map Components/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Map Components/ParallaxBackground.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Maps/Scripts/DebugMap.gd" type="Script" id=4]
+[ext_resource path="res://Maps/Scripts/Map.gd" type="Script" id=3]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Map Components/Button.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Map Components/Porta.tscn" type="PackedScene" id=7]
@@ -19,11 +19,12 @@ extents = Vector2( 128, 32 )
 extents = Vector2( 128, 96 )
 
 [node name="DebugMap" type="Node2D"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 layered_map = false
+current_map_path = "res://Maps/DebugMap.tscn"
 map_size = Vector2( 61, 16 )
 number_of_players = 2
 bgm = "res://Music/level1.ogg"
@@ -86,6 +87,18 @@ shape = SubResource( 2 )
 [node name="Node2D" parent="." instance=ExtResource( 10 )]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 2592, 512 )
+
+[node name="platform1" parent="Node2D" index="0"]
+position = Vector2( -336, 0 )
+
+[node name="Sprite" parent="Node2D/platform1" index="5"]
+scale = Vector2( 2, 1 )
+
+[node name="platform2" parent="Node2D" index="1"]
+position = Vector2( 480, 0 )
+
+[node name="Sprite" parent="Node2D/platform2" index="5"]
+scale = Vector2( 3, 1 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
 [connection signal="button_Trigger" from="Button" to="Door" method="_on_Button_button_Trigger"]

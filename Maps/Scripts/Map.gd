@@ -1,4 +1,4 @@
-#DebugMap
+#Map
 #Meu plano é que esse seja um template pra um mapa
 extends Node
 
@@ -9,6 +9,9 @@ onready var BGM_node	= main.get_node("BGM")
 
 #Variáveis exportadas
 export var layered_map = true
+
+#Caminho pro arquivo desse mapa
+export(String,FILE,"*.tscn") var current_map_path
 
 #Tamanho do mapa pra todas as camadas
 export var map_size 			= Vector2(0,0)
@@ -73,9 +76,19 @@ func _process(_delta):
 			players[current_player].active = false
 			players[1].active = true
 			current_player = 1
+	elif Input.is_action_just_pressed("Select Player 3"):
+		if number_of_players > 2:
+			players[current_player].active = false
+			players[2].active = true
+			current_player = 2
+	elif Input.is_action_just_pressed("Select Player 4"):
+		if number_of_players > 3:
+			players[current_player].active = false
+			players[3].active = true
+			current_player = 3
 
 func retry():
-	main.change_scene(self,"res://Maps/DebugMap.tscn")
+	main.change_scene(self,current_map_path)
 
 func _on_Goal_victory():
 	main.change_scene(self,"res://Menus/VictoryScene.tscn")

@@ -3,20 +3,17 @@
 [ext_resource path="res://Map Components/Scripts/Pulley.gd" type="Script" id=2]
 [ext_resource path="res://Map Components/Resources/minimalisticplatform.png" type="Texture" id=3]
 
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 320, 32 )
+extents = Vector2( 96, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 320, 16 )
+extents = Vector2( 96, 8 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 320, 32 )
+extents = Vector2( 96, 16 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 320, 16 )
+extents = Vector2( 96, 8 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 768, 80 )
@@ -30,28 +27,41 @@ collision_layer = 2
 collision_mask = 15
 
 [node name="rightrope" type="Line2D" parent="platform1"]
-position = Vector2( -512, 0 )
-points = PoolVector2Array( 800, 0, 800, -1280 )
+points = PoolVector2Array( 0, 0, 0, 0 )
 default_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 
 [node name="leftrope" type="Line2D" parent="platform1"]
-position = Vector2( -1088, 0 )
-points = PoolVector2Array( 800, 0, 800, -1280 )
+points = PoolVector2Array( 0, 0, 0, 0 )
 default_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 
+[node name="roofpointl" type="RayCast2D" parent="platform1"]
+visible = false
+position = Vector2( -64, 0 )
+enabled = true
+cast_to = Vector2( 0, -5000 )
+collision_mask = 2
+
+[node name="roofpointr" type="RayCast2D" parent="platform1"]
+visible = false
+position = Vector2( 64, 0 )
+enabled = true
+cast_to = Vector2( 0, -5000 )
+collision_mask = 2
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform1"]
+visible = false
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="platform1"]
 position = Vector2( 0, -9.53674e-07 )
-scale = Vector2( 3.33333, 2 )
 texture = ExtResource( 3 )
 
 [node name="Area2Dplat1" type="Area2D" parent="platform1"]
+visible = false
+position = Vector2( 0, -16 )
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform1/Area2Dplat1"]
-position = Vector2( 0, -32 )
 shape = SubResource( 2 )
 
 [node name="platform2" type="KinematicBody2D" parent="."]
@@ -60,28 +70,41 @@ collision_layer = 2
 collision_mask = 15
 
 [node name="rightrope" type="Line2D" parent="platform2"]
-position = Vector2( -512, 0 )
-points = PoolVector2Array( 800, 0, 800, -1280 )
+points = PoolVector2Array( 0, 0, 0, 0 )
 default_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 
 [node name="leftrope" type="Line2D" parent="platform2"]
-position = Vector2( -1088, 0 )
-points = PoolVector2Array( 800, 0, 800, -1280 )
+points = PoolVector2Array( 0, 0, 0, 0 )
 default_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 
+[node name="roofpointl" type="RayCast2D" parent="platform2"]
+visible = false
+position = Vector2( -64, 0 )
+enabled = true
+cast_to = Vector2( 0, -5000 )
+collision_mask = 2
+
+[node name="roofpointr" type="RayCast2D" parent="platform2"]
+visible = false
+position = Vector2( 64, 0 )
+enabled = true
+cast_to = Vector2( 0, -5000 )
+collision_mask = 2
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform2"]
+visible = false
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="platform2"]
 position = Vector2( 2.57492e-05, 9.53674e-07 )
-scale = Vector2( 3.33333, 2 )
 texture = ExtResource( 3 )
 
 [node name="Area2Dplat2" type="Area2D" parent="platform2"]
+visible = false
+position = Vector2( 0, -16 )
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform2/Area2Dplat2"]
-position = Vector2( 0, -32 )
 shape = SubResource( 4 )
 
 [node name="Limiter" type="Area2D" parent="."]
