@@ -107,7 +107,7 @@ position = Vector2( 2272, 1968 )
 
 [node name="Button2" parent="." instance=ExtResource( 10 )]
 modulate = Color( 1, 0.392157, 0.784314, 1 )
-position = Vector2( 1120, 1968 )
+position = Vector2( 1056, 1968 )
 
 [node name="Box2" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 0.392157, 0.784314, 1 )
