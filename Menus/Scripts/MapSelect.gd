@@ -37,3 +37,9 @@ func _on_Map1_pressed():
 	SFX_node.stream = load(SFX_buttonpress)
 	SFX_node.play()
 	main.change_scene(self,maps[1])
+
+
+func _on_Map2_pressed():
+	SFX_node.stream = load(SFX_buttonpress)
+	SFX_node.play()
+	main.change_scene(self,maps[2])

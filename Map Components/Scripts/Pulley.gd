@@ -43,11 +43,11 @@ func _ready():
 	plat1_transformed_texture = plat1_sprite.texture.get_size() * (plat1_sprite.transform.x + plat1_sprite.transform.y)
 	plat1_collision.shape.extents = Vector2(plat1_transformed_texture / 2)
 	plat1_floor_collision.position = Vector2(0,-(plat1_transformed_texture.y / 2))
-	plat1_floor_collision.shape.extents = Vector2(plat1_transformed_texture.x / 2,8)
+	plat1_floor_collision.shape.extents = Vector2(plat1_transformed_texture.x / 2,16)
 	plat2_transformed_texture = plat2_sprite.texture.get_size() * (plat2_sprite.transform.x + plat2_sprite.transform.y)
 	plat2_collision.shape.extents = Vector2(plat2_transformed_texture / 2)
 	plat2_floor_collision.position = Vector2(0,-(plat2_transformed_texture.y / 2))
-	plat2_floor_collision.shape.extents = Vector2(plat2_transformed_texture.x / 2,8)
+	plat2_floor_collision.shape.extents = Vector2(plat2_transformed_texture.x / 2,16)
 	
 	#Conecta as cordas na plataforma
 	plat1_roofpointr.position = Vector2((plat1_transformed_texture.x / 2) - 32,0)

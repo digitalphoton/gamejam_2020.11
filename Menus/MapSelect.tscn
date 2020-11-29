@@ -11,7 +11,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-maps = [ "res://Maps/DebugMap.tscn", "res://Maps/Map1.tscn" ]
+maps = [ "res://Maps/DebugMap.tscn", "res://Maps/Map1.tscn", "res://Maps/Map2.tscn" ]
 bgm = "res://Music/menu.ogg"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -27,9 +27,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 410.0
-margin_top = 238.0
+margin_top = 219.0
 margin_right = 614.0
-margin_bottom = 362.0
+margin_bottom = 381.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_constants/separation = 32
@@ -44,7 +44,7 @@ align = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 64.0
 margin_right = 204.0
-margin_bottom = 124.0
+margin_bottom = 162.0
 custom_constants/separation = 16
 
 [node name="DebugMap" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
@@ -64,7 +64,15 @@ size_flags_vertical = 5
 custom_fonts/font = ExtResource( 1 )
 custom_constants/hseparation = 64
 action_mode = 0
-text = "Level 1"
+text = "Map 1"
+
+[node name="Map2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 204.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 1 )
+action_mode = 0
+text = "Map 2"
 
 [node name="MapSelectText" type="Label" parent="MarginContainer"]
 visible = false
@@ -94,3 +102,4 @@ __meta__ = {
 }
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/DebugMap" to="." method="_on_DebugMap_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Map1" to="." method="_on_Map1_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Map2" to="." method="_on_Map2_pressed"]
