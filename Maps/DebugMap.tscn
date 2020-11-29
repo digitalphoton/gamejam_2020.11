@@ -28,6 +28,7 @@ current_map_path = "res://Maps/DebugMap.tscn"
 map_size = Vector2( 61, 16 )
 number_of_players = 2
 bgm = "res://Music/level1.ogg"
+next_scene = "res://Menus/VictoryScene.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 modulate = Color( 0.294118, 0.85098, 1, 1 )
@@ -69,6 +70,7 @@ modulate = Color( 1, 1, 0.392157, 1 )
 position = Vector2( 3808, 240 )
 
 [node name="Key" parent="." instance=ExtResource( 12 )]
+modulate = Color( 1, 1, 0.392157, 1 )
 position = Vector2( 3680, 224 )
 target_path = NodePath("../Door2")
 
@@ -101,6 +103,9 @@ position = Vector2( 480, 0 )
 scale = Vector2( 3, 1 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+
+[node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
+modulate = Color( 0.784314, 0.686275, 1, 1 )
 [connection signal="button_Trigger" from="Button" to="Door" method="_on_Button_button_Trigger"]
 [connection signal="button_Trigger" from="Button2" to="Box" method="_on_Button_button_Trigger"]
 [connection signal="button_Trigger" from="Button3" to="Key" method="_on_Button_button_Trigger"]

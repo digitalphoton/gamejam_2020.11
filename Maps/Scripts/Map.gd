@@ -28,6 +28,9 @@ export var current_player 		= 0
 #Música do mapa
 export(String,FILE,"*.ogg") var bgm
 
+#Próxima cena
+export(String,FILE,"*tscn") var next_scene
+
 #Variáveis
 var cell_size
 
@@ -91,4 +94,4 @@ func retry():
 	main.change_scene(self,current_map_path)
 
 func _on_Goal_victory():
-	main.change_scene(self,"res://Menus/VictoryScene.tscn")
+	main.change_scene(self,next_scene)

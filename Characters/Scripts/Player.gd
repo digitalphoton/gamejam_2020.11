@@ -155,6 +155,12 @@ func _physics_process(_delta):
 		
 		#Look at deez moves not moving
 		controller.move(false,false,false)
+		
+		#Testa se o player está no chão, precisa ser essa função pq o is_on_floor é exato demais e o player ficaria tendo convulsões na hora de descer nas plataformas das polias
+		if test_move(self.transform,Vector2(0,controller.gravity),false):
+			sprite.play("idle")
+		elif sprite.get_animation() != "jump":
+			sprite.play("jump")
 
 func set_camlimits(left = -10000000,top = -10000000,right = 10000000,bottom = 10000000):
 	camera.limit_left 	= left

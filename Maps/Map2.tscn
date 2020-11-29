@@ -24,6 +24,7 @@ map_size = Vector2( 89, 18 )
 number_of_players = 2
 current_player = 1
 bgm = "res://Music/level2.ogg"
+next_scene = "res://Maps/Map3.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 modulate = Color( 1, 0.588235, 0.784314, 1 )
@@ -41,6 +42,7 @@ tile_data = PoolIntArray( 655411, 0, 65541, 720947, 0, 65538, 786483, 0, 65538, 
 
 [node name="TileMap2" parent="." instance=ExtResource( 1 )]
 modulate = Color( 0.392157, 0.784314, 0.392157, 1 )
+z_index = -1
 collision_layer = 32
 collision_mask = 9
 tile_data = PoolIntArray( 1048650, 0, 65542, 1048651, 0, 2, 1048652, 0, 2, 1048653, 0, 2, 1048654, 0, 2, 1048655, 0, 2, 1048656, 0, 5, 2031690, 0, 65542, 2031691, 0, 2, 2031692, 0, 2, 2031693, 0, 2, 2031694, 0, 2, 2031695, 0, 2, 2031696, 0, 5 )
