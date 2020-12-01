@@ -92,8 +92,11 @@ func _physics_process(_delta):
 							sprite.play("idle")
 				#Se não toca as animações normalmente
 				else:
+					#Toca idle quando o player toca direita e esquerda ao mesmo tempo
+					if player_input.right and player_input.left:
+						sprite.play("idle")
 					#Toca run quando o player vai pra direita ou pra esquerda
-					if player_input.right or player_input.left:
+					elif player_input.right or player_input.left:
 						sprite.play("run")
 					#Toca idle quando o player não toca nada, yes there are two play idles screw it okay
 					else:

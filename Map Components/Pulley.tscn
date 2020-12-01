@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Map Components/Scripts/Pulley.gd" type="Script" id=2]
 [ext_resource path="res://Map Components/Resources/minimalisticplatform.png" type="Texture" id=3]
@@ -16,7 +16,10 @@ extents = Vector2( 96, 16 )
 extents = Vector2( 96, 16 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 768, 80 )
+extents = Vector2( 144, 80 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 144, 80 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
@@ -24,7 +27,10 @@ script = ExtResource( 2 )
 [node name="platform1" type="KinematicBody2D" parent="."]
 position = Vector2( -512, 0 )
 collision_layer = 2
-collision_mask = 15
+collision_mask = 13
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="rightrope" type="Line2D" parent="platform1"]
 points = PoolVector2Array( 0, 0, 0, 0 )
@@ -68,7 +74,10 @@ shape = SubResource( 2 )
 [node name="platform2" type="KinematicBody2D" parent="."]
 position = Vector2( 512, 0 )
 collision_layer = 2
-collision_mask = 15
+collision_mask = 13
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="rightrope" type="Line2D" parent="platform2"]
 points = PoolVector2Array( 0, 0, 0, 0 )
@@ -114,7 +123,12 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limiter"]
+position = Vector2( -512, 0 )
 shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Limiter"]
+position = Vector2( 512, 0 )
+shape = SubResource( 6 )
 [connection signal="body_entered" from="platform1/Area2Dplat1" to="." method="_on_Area2Dplat1_body_entered"]
 [connection signal="body_exited" from="platform1/Area2Dplat1" to="." method="_on_Area2Dplat1_body_exited"]
 [connection signal="body_entered" from="platform2/Area2Dplat2" to="." method="_on_Area2Dplat2_body_entered"]

@@ -21,7 +21,7 @@ onready var plat2_collision = get_node("platform2/CollisionShape2D")
 onready var plat2_floor_collision = get_node("platform2/Area2Dplat2/CollisionShape2D")
 
 export var player_mass = 1.5
-export var speed_modifier = 150
+export var speed_modifier = 50
 
 var total_mass_plat1 = 0
 var total_mass_plat2 = 0
@@ -81,7 +81,7 @@ func _physics_process(delta):
 		if result_move <= 0:
 #			print("plat1 must up")
 			result_move = 0
-		
+	
 	plat1.position.y += result_move*speed_modifier*delta
 	plat2.position.y -= result_move*speed_modifier*delta
 
@@ -113,12 +113,12 @@ func _on_Area2Dplat2_body_exited(body):
 
 
 func _on_Limiter_body_exited(body):
-	if body == get_node("platform1") or body == get_node("platform2"):
+	if body == plat1 or body == plat2:
 		if result_move >= 0:
 			flag = 1
 		else:
 			flag = 2
 
 func _on_Limiter_body_entered(body):
-	if body == get_node("platform1") or body == get_node("platform2"):
+	if body == plat1 or body == plat2:
 		flag = 0
