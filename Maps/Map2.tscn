@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Map Components/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Map Components/ParallaxBackground.tscn" type="PackedScene" id=2]
@@ -13,9 +13,6 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 96, 576 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 144, 80 )
 
 [node name="Map2" type="Node2D"]
 script = ExtResource( 3 )
@@ -81,24 +78,30 @@ modulate = Color( 1, 0.784314, 0.588235, 1 )
 position = Vector2( 4448, 1984 )
 
 [node name="platform1" parent="Node2D" index="0"]
-position = Vector2( -480, 224 )
+position = Vector2( -480, 240 )
 
 [node name="Sprite" parent="Node2D/platform1" index="5"]
 scale = Vector2( 2, 1 )
 
 [node name="platform2" parent="Node2D" index="1"]
-position = Vector2( 512, 32 )
+position = Vector2( 512, 16 )
 scale = Vector2( 1.7, 1 )
 
-[node name="Limiter" parent="Node2D" index="2"]
-position = Vector2( 0, 96 )
+[node name="Sprite" parent="Node2D/platform2" index="5"]
+position = Vector2( -4.1008e-05, 9.53674e-07 )
+scale = Vector2( 0.980393, 1 )
 
-[node name="CollisionShape2D" parent="Node2D/Limiter" index="0"]
-position = Vector2( -480, 32 )
-shape = SubResource( 2 )
+[node name="platform1 upper limit" parent="Node2D" index="2"]
+position = Vector2( -480, 16 )
 
-[node name="CollisionShape2D2" parent="Node2D/Limiter" index="1"]
-position = Vector2( 512, 32 )
+[node name="platform1 lower limit" parent="Node2D" index="3"]
+position = Vector2( -480, 240 )
+
+[node name="platform2 upper limit" parent="Node2D" index="4"]
+position = Vector2( 512, 16 )
+
+[node name="platform2 lower limit" parent="Node2D" index="5"]
+position = Vector2( 512, 256 )
 
 [node name="Door" parent="." instance=ExtResource( 9 )]
 modulate = Color( 0.392157, 0.392157, 1, 1 )

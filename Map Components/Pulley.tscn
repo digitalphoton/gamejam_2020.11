@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Map Components/Scripts/Pulley.gd" type="Script" id=2]
 [ext_resource path="res://Map Components/Resources/minimalisticplatform.png" type="Texture" id=3]
@@ -10,24 +10,19 @@ extents = Vector2( 96, 16 )
 extents = Vector2( 96, 16 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 96, 16 )
+extents = Vector2( 94.1177, 16 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 96, 16 )
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 144, 80 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 144, 80 )
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
+speed_modifier = 250
 
 [node name="platform1" type="KinematicBody2D" parent="."]
 position = Vector2( -512, 0 )
 collision_layer = 2
-collision_mask = 13
+collision_mask = 15
 __meta__ = {
 "_edit_group_": true
 }
@@ -74,7 +69,7 @@ shape = SubResource( 2 )
 [node name="platform2" type="KinematicBody2D" parent="."]
 position = Vector2( 512, 0 )
 collision_layer = 2
-collision_mask = 13
+collision_mask = 15
 __meta__ = {
 "_edit_group_": true
 }
@@ -118,20 +113,18 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform2/Area2Dplat2"]
 shape = SubResource( 4 )
 
-[node name="Limiter" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 2
+[node name="platform1 upper limit" type="Position2D" parent="."]
+position = Vector2( -512, -128 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Limiter"]
-position = Vector2( -512, 0 )
-shape = SubResource( 5 )
+[node name="platform1 lower limit" type="Position2D" parent="."]
+position = Vector2( -512, 128 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Limiter"]
-position = Vector2( 512, 0 )
-shape = SubResource( 6 )
+[node name="platform2 upper limit" type="Position2D" parent="."]
+position = Vector2( 512, -128 )
+
+[node name="platform2 lower limit" type="Position2D" parent="."]
+position = Vector2( 512, 128 )
 [connection signal="body_entered" from="platform1/Area2Dplat1" to="." method="_on_Area2Dplat1_body_entered"]
 [connection signal="body_exited" from="platform1/Area2Dplat1" to="." method="_on_Area2Dplat1_body_exited"]
 [connection signal="body_entered" from="platform2/Area2Dplat2" to="." method="_on_Area2Dplat2_body_entered"]
 [connection signal="body_exited" from="platform2/Area2Dplat2" to="." method="_on_Area2Dplat2_body_exited"]
-[connection signal="body_entered" from="Limiter" to="." method="_on_Limiter_body_entered"]
-[connection signal="body_exited" from="Limiter" to="." method="_on_Limiter_body_exited"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=44 format=2]
 
+[ext_resource path="res://Characters/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Controller.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Characters/Scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://Characters/Resources/idle.png" type="Texture" id=4]
 [ext_resource path="res://Characters/Resources/playerruncycle/Scene1_002.png" type="Texture" id=5]
 [ext_resource path="res://Characters/Resources/playerruncycle/Scene1_003.png" type="Texture" id=6]
@@ -73,10 +73,7 @@ extents = Vector2( 12, 8 )
 "Player",
 ]]
 collision_mask = 6
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_horizontal_guides_": [  ]
-}
+script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -28 )
